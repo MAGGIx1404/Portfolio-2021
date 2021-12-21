@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/home.css" />
+  </head>
+  <body>
+    <!-- nav bar start -->
+    <nav class="nav full-size" id="nav" data-scroll data-direction>
+      <div class="nav-container row full-size">
+        <a href="#" class="logo-btn center-item">
+          <h1 class="logo-text">J</h1>
+          <div class="ball"></div>
+        </a>
+        <div class="nav-links row">
+          <a href="#" class="nav-btn btn">Projects</a>
+          <a href="#" class="nav-btn btn">About</a>
+          <a href="#" class="nav-btn btn">Contact</a>
+        </div>
+      </div>
+    </nav>
+    <!-- nav bar end -->
+
+    <!-- wrapper start -->
+    <div class="wrapper" id="wrapper">
+      <!-- scroll container start -->
+      <div class="scroll__container" id="scroll__container">
+        <!-- banner start -->
+        <div class="banner section full-size">
+          <div class="nav-container full-size center-item text-center">
+            <h6 class="sub-title">JEET.</h6>
+            <div class="text-box">
+              <h1 class="title banner-title">I make Creative</h1>
+            </div>
+            <div class="text-box">
+              <h1 class="title banner-title">
+                Things, Everyday <span>.</span>
+              </h1>
+            </div>
+          </div>
+        </div>
+        <!-- banner end -->
+      </div>
+      <!-- scroll container end -->
+    </div>
+    <!-- wrapper end -->
+
+    <!-- custom cursor start -->
+    <div class="cursor center-item" id="cursor"></div>
+    <div class="shapes">
+      <div class="shape"></div>
+    </div>
+    <!-- custom cursor end -->
+
+    <!-- shaders start -->
+
+    <script id="intro-vs" type="x-shader/x-vertex">
+      precision mediump float;
+
+      // default mandatory variables
+      attribute vec3 aVertexPosition;
+      attribute vec2 aTextureCoord;
+
+      uniform mat4 uMVMatrix;
+      uniform mat4 uPMatrix;
+
+      // custom variables
+      varying vec3 vVertexPosition;
+      varying vec3 vOriginalVertexPosition;
+      varying vec2 vTextureCoord;
+
+      uniform float uMouseTime;
+      uniform vec2 uMousePosition;
+      uniform float uMouseMoveStrength;
+
+
+      void main() {
+
+          vec3 vertexPosition = aVertexPosition;
+
+          // fix the curtain on top (y coord ranges from top : 1.0 to bottom : -1.0)
+          float yCoordRatio = vertexPosition.y - 1.0;
+
+
+          float distanceFromMouse = distance(vec2(uMousePosition.x, 0.0), vec2(vertexPosition.x, 0.0));
+
+          //float waveSinusoid = cos(10.0 * 1.5 * ((1.0 / (distanceFromMouse - 2.0)) - (uMouseTime / 500.0)));
+          float waveSinusoid = cos(35.0 * ((1.0 / (cos(distanceFromMouse) - 2.0)) - uMouseTime * 0.0015));
+
+          float xAttenuation = ((2.0 - abs(uMousePosition.x - vertexPosition.x)) / 2.0);
+          float yAttenuation = ((-1.0 * uMousePosition.y) + 1.0) / 2.0;
+          if(uMousePosition.y <= -1.0) {
+              yAttenuation = yAttenuation + (uMousePosition.y + 1.0) * 1.5;
+          }
+          yAttenuation = clamp(yAttenuation, 0.0, 1.0);
+
+          float curtainEffect = yCoordRatio  * waveSinusoid * uMouseMoveStrength * xAttenuation * yAttenuation;
+
+          float xDisplacement = abs(yCoordRatio) * sign(vertexPosition.x);
+
+          vertexPosition.z +=  curtainEffect / 30.0;
+          vertexPosition.x +=  curtainEffect * 1.5 * xDisplacement / 240.0;
+
+             gl_Position = uPMatrix * uMVMatrix * vec4(vertexPosition, 1.0);
+
+             // varyings
+             vTextureCoord = aTextureCoord;
+             vVertexPosition = vertexPosition;
+          vOriginalVertexPosition = aVertexPosition;
+      }
+    </script>
+    <script id="intro-fs" type="x-shader/x-fragment">
+      precision mediump float;
+
+      varying vec3 vVertexPosition;
+      varying vec3 vOriginalVertexPosition;
+      varying vec2 vTextureCoord;
+
+      uniform sampler2D curtainSampler;
+      uniform sampler2D titleSampler;
+
+
+      vec3 getNormal(vec3 pos, vec3 originalPos) {
+          float diff = 0.25;
+          vec3 neighbour1 = vec3(originalPos.x + diff, originalPos.y, originalPos.z);
+          vec3 neighbour2 = vec3(originalPos.x, pos.y + diff, originalPos.z);
+          vec3 tangent = (neighbour1 - pos);
+          vec3 bitangent = (neighbour2 - pos);
+          return normalize(cross(tangent, bitangent));
+      }
+
+
+      void main() {
+
+          vec2 textureCoords = vec2(vTextureCoord.x, vTextureCoord.y);
+
+          // slides transitions
+          vec4 finalColor = texture2D(curtainSampler, textureCoords);
+          vec4 title = texture2D(titleSampler, textureCoords);
+
+          finalColor = mix(finalColor, title, title.a);
+
+          //finalColor.rgb -= clamp(-vVertexPosition.z / 5.0, 0.0, 1.0);
+          //finalColor.rgb += clamp(vVertexPosition.z / 5.0, 0.0, 1.0);
+
+          vec3 normal = getNormal(vVertexPosition, vOriginalVertexPosition);
+
+          vec3 lightPos = normalize(vec3(0.3, 0.3, 1.0));
+          float light = smoothstep(0.45, 1.0, dot(normal, lightPos));
+
+          float lightStrength = 0.35;
+          float ambientLight = 1.0 - lightStrength;
+          finalColor.rgb = finalColor.rgb * light * lightStrength + finalColor.rgb * ambientLight;
+
+          // handling premultiplied alpha
+          finalColor = vec4(finalColor.rgb * finalColor.a, finalColor.a);
+
+          gl_FragColor = finalColor;
+      }
+    </script>
+
+    <!-- shaders end -->
+
+    <!-- script -->
+    <script src="./javascript/index.js" type="module"></script>
+  </body>
+</html>

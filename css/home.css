@@ -1,0 +1,14 @@
+/* import stylesheet */
+@import url(./style.css);
+
+/* banner start */
+
+.banner .nav-container {
+  min-height: 100vh;
+}
+
+.banner .text-box h1 span {
+  color: var(--theme-color);
+}
+
+/* banner end */
