@@ -71,6 +71,7 @@
   align-items: flex-start;
   position: relative !important;
   z-index: 5;
+  cursor: grab;
 }
 
 .project .slider .slide .img-side {
@@ -84,8 +85,9 @@
   z-index: 4;
   display: block;
   height: 100%;
-  overflow: hidden;
+  /* overflow: hidden; */
   transform-origin: center;
+  cursor: pointer;
 }
 
 .project .slider .slide .img-side .curtain img {
@@ -242,12 +244,24 @@
   transition: all 0.5s ease;
 }
 
+.project .slider .glide .glide__arrows button svg path.line {
+  transform: scaleX(2);
+}
+
 .project .slider .glide .glide__arrows button:hover svg path.line {
-  transform: scale(1.4, 1);
+  transform: scale(2.2, 1);
 }
 
 .project .slider .glide .glide__arrows button:hover svg {
   transform: scale(1.5);
+}
+
+.project .notice {
+  position: absolute;
+  bottom: 5vh;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1vw;
 }
 
 /* slider end */

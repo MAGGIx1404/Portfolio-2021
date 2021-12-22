@@ -21,6 +21,7 @@ preloader(".scroll__container").then(() => {
 
 // init all function
 function init() {
+  loader(); // init
   smoothScroll(); // init smoothscroll
   customCursor(); // init custom cursor
   roundText(); // init round-text
@@ -156,6 +157,9 @@ function splitContent() {
 // custom cursor
 function customCursor() {
   const cursor = document.querySelector("#cursor");
+  const buttons = document.querySelectorAll(".glide__arrow");
+  const footerBtns = document.querySelectorAll(".footer-btn");
+
   document.body.addEventListener("mousemove", (evt) => {
     const mouseX = evt.clientX;
     const mouseY = evt.clientY;
@@ -191,6 +195,34 @@ function customCursor() {
       });
     });
   });
+
+  buttons.forEach((ele) => {
+    ele.addEventListener("mousemove", function () {
+      gsap.to(cursor, 0.3, {
+        background: "rgba(255, 225, 0,0.7)",
+        scale: 4,
+      });
+    });
+    ele.addEventListener("mouseleave", function () {
+      gsap.to(cursor, 0.3, {
+        background: "transparent",
+        scale: 1,
+      });
+    });
+  });
+
+  footerBtns.forEach((ele) => {
+    ele.addEventListener("mouseover", function () {
+      gsap.to(cursor, 0.2, {
+        scale: 2.5,
+      });
+    });
+    ele.addEventListener("mouseleave", function () {
+      gsap.to(cursor, 0.2, {
+        scale: 1,
+      });
+    });
+  });
 }
 
 // fake 3d effect
@@ -214,4 +246,15 @@ function tiltBox() {
     gyroscopeMaxAngleY: 45, // This is the top limit of the device angle on Y axis, meaning that a device rotated at this angle would tilt the element as if the mouse was on the bottom border of the element;
     gyroscopeSamples: 10,
   });
+}
+
+// loader
+function loader() {
+  const loaderBox = document.querySelector(".loader");
+  if (document.body.classList.contains("loading")) {
+    console.log("loading");
+  } else {
+    loaderBox.style.display = "none";
+    console.log("loaded successfully");
+  }
 }
