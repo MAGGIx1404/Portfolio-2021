@@ -3,12 +3,251 @@
 
 /* banner start */
 
-.banner .nav-container {
-  min-height: 100vh;
+.banner {
+  padding: 20vh 0 10vh 0;
 }
 
-.banner .text-box h1 span {
-  color: var(--theme-color);
+.banner .nav-container {
+  width: 95%;
+  margin: 0 0 auto auto;
+}
+
+.banner .nav-container .menu {
+  width: 100%;
+  height: fit-content;
+}
+
+.banner .nav-container .menu h1 {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.hover-reveal {
+  position: absolute;
+  z-index: -1;
+  width: 30vw;
+  height: 35vh;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.hover-reveal__inner {
+  overflow: hidden;
+}
+
+.hover-reveal__inner,
+.hover-reveal__img {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.hover-reveal__img {
+  background-size: cover;
+  background-position: 50% 50%;
 }
 
 /* banner end */
+
+/* slider start */
+
+.project {
+  padding: 17vh 0;
+}
+.project .slider .glide__track,
+.project .slider .glide__track .glide__slides,
+.project .slider {
+  width: 100%;
+  height: fit-content;
+  overflow: visible !important;
+}
+
+.project .slider .slide {
+  width: 100% !important;
+  height: fit-content;
+  padding: 2vh 8vw 2vh 18vw;
+  align-items: flex-start;
+  position: relative !important;
+  z-index: 5;
+}
+
+.project .slider .slide .img-side {
+  flex: 0 0 40vw;
+  max-width: 40vw;
+  min-height: 40vh;
+}
+
+.project .slider .slide .img-side .curtain {
+  position: relative;
+  z-index: 4;
+  display: block;
+  height: 100%;
+  overflow: hidden;
+  transform-origin: center;
+}
+
+.project .slider .slide .img-side .curtain img {
+  width: 100%;
+  height: 100%;
+  min-height: 75vh;
+  transition: all 0.5s ease;
+  /* filter: grayscale(1); */
+  filter: grayscale(100%);
+  transition: all 1s ease;
+  transform-origin: center;
+}
+
+.project .glide--dragging .img-side .curtain img {
+  transform: rotate(45deg) !important;
+  border-radius: 50%;
+}
+
+.project .glide__slide--active .img-side .curtain img {
+  filter: grayscale(0) !important;
+}
+
+.project .slider .slide .slide-content {
+  flex: 0 0 20vw;
+  max-width: 20vw;
+  height: 100%;
+  padding-top: 4vh;
+}
+
+.project .slider .slide .slide-content h1 {
+  line-height: 1.2;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.project .glide__slide--active .slide-content h1 {
+  opacity: 1 !important;
+}
+
+.project .slider .slide .slide-content p {
+  color: var(--gray-color);
+  letter-spacing: 2px;
+  transform: translateY(5vh);
+}
+
+#canvas {
+  position: fixed;
+  right: 0;
+  height: 100vh;
+  left: 0;
+  width: 100%;
+}
+
+.project .slide-titles {
+  position: absolute;
+  bottom: 20vh;
+  left: 4vw;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.project .slider .slide .slide-content p .word .char,
+.project .slide-titles h1 .word .char {
+  position: relative;
+  opacity: 0;
+  transform: translateY(100%) rotate(90deg);
+  transition: all 0.4s ease;
+}
+
+.project .glide__slide--active .slide-content p .word .char,
+.project .glide__slide--active .slide-titles h1 .word .char {
+  transform: translateY(0) rotate(0) !important;
+  opacity: 1 !important;
+}
+.project .glide__slide--active .slide-content p .word .char:nth-of-type(2),
+.project .glide__slide--active .slide-titles h1 .word .char:nth-of-type(2) {
+  transition-delay: 0.05s;
+}
+.project .glide__slide--active .slide-content p .word .char:nth-of-type(3),
+.project .glide__slide--active .slide-titles h1 .word .char:nth-of-type(3) {
+  transition-delay: 0.1s;
+}
+.project .glide__slide--active .slide-content p .word .char:nth-of-type(4),
+.project .glide__slide--active .slide-titles h1 .word .char:nth-of-type(4) {
+  transition-delay: 0.15s;
+}
+.project .glide__slide--active .slide-content p .word .char:nth-of-type(5),
+.project .glide__slide--active .slide-titles h1 .word .char:nth-of-type(5) {
+  transition-delay: 0.2s;
+}
+.project .glide__slide--active .slide-content p .word .char:nth-of-type(6),
+.project .glide__slide--active .slide-titles h1 .word .char:nth-of-type(6) {
+  transition-delay: 0.25s;
+}
+.project .glide__slide--active .slide-content p .word .char:nth-of-type(7),
+.project .glide__slide--active .slide-titles h1 .word .char:nth-of-type(7) {
+  transition-delay: 0.3s;
+}
+.project .glide__slide--active .slide-content p .word .char:nth-of-type(8),
+.project .glide__slide--active .slide-titles h1 .word .char:nth-of-type(8) {
+  transition-delay: 0.35s;
+}
+.project .glide__slide--active .slide-content p .word .char:nth-of-type(9),
+.project .glide__slide--active .slide-titles h1 .word .char:nth-of-type(9) {
+  transition-delay: 0.4s;
+}
+.project .glide__slide--active .slide-content p .word .char:nth-of-type(10),
+.project .glide__slide--active .slide-titles h1 .word .char:nth-of-type(10) {
+  transition-delay: 0.45s;
+}
+.project .glide__slide--active .slide-content p .word .char:nth-of-type(11),
+.project .glide__slide--active .slide-titles h1 .word .char:nth-of-type(11) {
+  transition-delay: 0.5s;
+}
+.project .glide__slide--active .slide-content p .word .char:nth-of-type(12),
+.project .glide__slide--active .slide-titles h1 .word .char:nth-of-type(12) {
+  transition-delay: 0.55s;
+}
+
+.project .slider .glide {
+  position: absolute;
+  bottom: 30%;
+  transform: translateY(30%);
+  right: 15vw;
+  width: fit-content;
+  height: fit-content;
+}
+
+.project .slider .glide .glide__arrows {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 15vw;
+}
+
+.project .slider .glide .glide__arrows button {
+  background-color: transparent;
+}
+
+.project .slider .glide .glide__arrows button:nth-of-type(2) {
+  transform: rotate(180deg);
+  margin-top: 6vh;
+}
+
+.project .slider .glide .glide__arrows button svg {
+  width: 6vw;
+  height: 4vh;
+  transition: all 0.5s ease;
+  transform-origin: center;
+}
+
+.project .slider .glide .glide__arrows button svg path {
+  transform-origin: left;
+  transition: all 0.5s ease;
+}
+
+.project .slider .glide .glide__arrows button:hover svg path.line {
+  transform: scale(1.4, 1);
+}
+
+.project .slider .glide .glide__arrows button:hover svg {
+  transform: scale(1.5);
+}
+
+/* slider end */

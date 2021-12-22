@@ -1,29 +1,43 @@
 // import libraries
-import { gsap, Expo, Back } from "gsap";
+import { preloader } from "./preloader";
 import LocomotiveScroll from "locomotive-scroll";
-import { Curtains, Plane, Vec2 } from "curtainsjs/src/index.mjs";
+import { gsap } from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import CircleType from "circletype";
+import Glide, { Controls } from "@glidejs/glide";
+import "@glidejs/glide/dist/css/glide.core.min.css";
+import "splitting/dist/splitting.css";
+import "splitting/dist/splitting-cells.css";
+import Splitting from "splitting";
+import VanillaTilt from "vanilla-tilt";
 
-//init all events and function on page load
-window.addEventListener("load", function () {
-  init(); // init all events
+// register gsap plugins
+gsap.registerPlugin(ScrollTrigger);
+
+// preload the images set as data attrs in the menu items
+preloader(".scroll__container").then(() => {
+  init();
 });
 
-// init all events
+// init all function
 function init() {
+  smoothScroll(); // init smoothscroll
   customCursor(); // init custom cursor
-  smoothScroll(); // init smooth scroll
+  roundText(); // init round-text
+  splitContent(); // init spliting text
+  slider(); // init slider
+  tiltBox(); // init fake 3d effect
 }
-
 // smooth scroll
 function smoothScroll() {
-  // scroller
+  // scroll init
   const scroll__container = document.getElementById("scroll__container");
-  //smooth scroll crate
+
   const scroller = new LocomotiveScroll({
     el: scroll__container, //scroll element (scroll container)
     smooth: true, // smooth scroll enabled
     getDirection: true, // display scoll direction (up & down)
-    lerp: 0.1, //scroll smoothness
+    lerp: 0.15, //scroll smoothness
     smartphone: {
       lerp: 0.5,
       smooth: true, //smooth scroll enabled for mobile
@@ -46,20 +60,103 @@ function smoothScroll() {
     touchMultiplier: 2,
     scrollFromAnywhere: false,
   });
-  // flexible nav bar
-  scroller.on("scroll", (instance) => {
-    document
-      .getElementById("nav")
-      .setAttribute("data-direction", instance.direction);
+
+  // skew effect on scroll
+  scroller.on("scroll", ScrollTrigger.update);
+
+  ScrollTrigger.scrollerProxy("#scroll__container", {
+    scrollTop(value) {
+      return arguments.length
+        ? scroller.scrollTo(value, 0, 0)
+        : scroller.scroll.instance.scroll.y;
+    },
+    getBoundingClientRect() {
+      return {
+        top: 0,
+        left: 0,
+        width: window.innerWidth,
+        height: window.innerHeight,
+      };
+    },
   });
+
+  /* ADD LOCOSCROLL */
+
+  /* ADD SKEW SECTION */
+
+  let proxy = { skew: 0 },
+    skewSetter = gsap.quickSetter(".skew-el", "skewY", "deg"), // fast
+    clamp = gsap.utils.clamp(-20, 20); // don't let the skew go beyond 20 degrees.
+
+  ScrollTrigger.create({
+    scroller: "#scroll__container",
+    trigger: ".scroll__container",
+
+    onUpdate: (self) => {
+      let skew = clamp(self.getVelocity() / -300);
+      // only do something if the skew is MORE severe. Remember, we're always tweening back to 0, so if the user slows their scrolling quickly, it's more natural to just let the tween handle that smoothly rather than jumping to the smaller skew.
+      if (Math.abs(skew) > Math.abs(proxy.skew)) {
+        proxy.skew = skew;
+        gsap.to(proxy, {
+          skew: 0,
+          duration: 0.4,
+          ease: "power3",
+          overwrite: true,
+          onUpdate: () => skewSetter(proxy.skew),
+        });
+      }
+    },
+  });
+
+  ScrollTrigger.addEventListener("refresh", () => scroller.update());
+  ScrollTrigger.refresh();
+}
+
+//roundtext
+function roundText() {
+  const circleType = new CircleType(document.getElementById("round"));
+  circleType.radius(45);
+}
+
+// slider
+function slider() {
+  var slider = new Glide(".slider", {
+    type: "slider",
+    perView: 1,
+    focusAt: "center",
+    rewind: false,
+    dragThreshold: "100",
+    swipeThreshold: "50",
+    animationDuration: "700",
+    animationTimingFunc: "linear",
+    disabledArrow: false,
+    classes: {
+      direction: {
+        ltr: "glide--ltr",
+        rtl: "glide--rtl",
+      },
+      slider: "glide--slider",
+      carousel: "glide--carousel",
+      swipeable: "glide--swipeable",
+      dragging: "glide--dragging",
+      cloneSlide: "glide__slide--clone",
+      activeNav: "glide__bullet--active",
+      activeSlide: "glide__slide--active",
+      disabledArrow: "glide__arrow--disabled",
+    },
+  });
+  slider.mount();
+}
+
+// spliting texts
+function splitContent() {
+  Splitting();
 }
 
 // custom cursor
 function customCursor() {
-  const cursor = document.getElementById("cursor");
-  const shape = document.querySelector(".shape");
-  const btns = document.querySelectorAll(".btn");
-  document.addEventListener("mousemove", (evt) => {
+  const cursor = document.querySelector("#cursor");
+  document.body.addEventListener("mousemove", (evt) => {
     const mouseX = evt.clientX;
     const mouseY = evt.clientY;
 
@@ -67,41 +164,54 @@ function customCursor() {
       x: mouseX,
       y: mouseY,
       stagger: -0.1,
-    });
-
-    gsap.to(shape, {
-      x: mouseX,
-      y: mouseY,
-      stagger: -0.2,
       transformOrigin: "50% 50%",
     });
+
+    // gsap.set(".shape", {
+    //   x: mouseX,
+    //   y: mouseY,
+    //   stagger: -0.1,
+    // });
   });
-  document.addEventListener("mouseout", function () {
-    cursor.style.display = "none";
-  });
-  document.addEventListener("mouseover", function () {
-    cursor.style.display = "flex";
-  });
-  btns.forEach((ele) => {
-    ele.addEventListener("mouseover", function () {
-      gsap.to(cursor, 0.3, {
-        width: "5rem",
-        height: "5rem",
-        background: "#fff",
-        margin: "-2.5rem 0 0 -2.5rem",
-        ease: "back.out(2)",
+
+  const slideImages = document.querySelectorAll(".slide-img");
+  slideImages.forEach((ele) => {
+    ele.addEventListener("mousemove", function () {
+      cursor.classList.add("active");
+      gsap.to(cursor, 0.2, {
+        scale: 6,
       });
-      cursor.innerHTML = "<p>ENTER</p>";
+      ele.classList.add("active");
     });
     ele.addEventListener("mouseleave", function () {
-      gsap.to(cursor, 0.3, {
-        width: "2rem",
-        height: "2rem",
-        background: "#00a200",
-        margin: "-1rem 0 0 -1rem",
-        ease: "back.in(2)",
+      cursor.classList.remove("active");
+      ele.classList.remove("active");
+      gsap.to(cursor, 0.2, {
+        scale: 1,
       });
-      cursor.innerHTML = "";
     });
+  });
+}
+
+// fake 3d effect
+function tiltBox() {
+  VanillaTilt.init(document.querySelectorAll(".slide-img"), {
+    reverse: true, // reverse the tilt direction
+    max: 2, // max tilt rotation (degrees)
+    startX: 0, // the starting tilt on the X axis, in degrees.
+    startY: 0, // the starting tilt on the Y axis, in degrees.
+    perspective: 1000,
+    glare: true,
+    maxGlare: 0.5,
+    "max-glare": 1,
+    "glare-prerender": false,
+    easing: "cubic-bezier(.03,.98,.52,.99)",
+    speed: 1000,
+    gyroscope: true, // Boolean to enable/disable device orientation detection,
+    gyroscopeMinAngleX: -45, // This is the bottom limit of the device angle on X axis, meaning that a device rotated at this angle would tilt the element as if the mouse was on the left border of the element;
+    gyroscopeMaxAngleX: 45, // This is the top limit of the device angle on X axis, meaning that a device rotated at this angle would tilt the element as if the mouse was on the right border of the element;
+    gyroscopeMinAngleY: -45, // This is the bottom limit of the device angle on Y axis, meaning that a device rotated at this angle would tilt the element as if the mouse was on the top border of the element;
+    gyroscopeMaxAngleY: 45, // This is the top limit of the device angle on Y axis, meaning that a device rotated at this angle would tilt the element as if the mouse was on the bottom border of the element;
+    gyroscopeSamples: 10,
   });
 }

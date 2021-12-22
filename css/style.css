@@ -28,8 +28,9 @@ input {
   outline: none;
   border: none;
   text-decoration: none;
-  color: var(--black-color);
+  color: var(--white-color);
   transition: all 0.5s ease;
+  font-family: var(--i-bold);
 }
 
 article,
@@ -182,7 +183,8 @@ body {
   overscroll-behavior: none;
   font-family: "Poppins", sans-serif;
   background-color: var(--bg-color);
-  color: var(--black-color);
+  color: var(--white-color);
+  transition: 0.3s ease;
 }
 
 /* fonts */
@@ -204,13 +206,19 @@ body {
   --i-thin: i-thin;
   --black-color: #000;
   --white-color: #fff;
-  --theme-color: #00a200;
-  --bg-color: #f3f3f5;
+  --theme-color: #ffc401;
+  --light-theme-color: rgb(255, 225, 0);
+  --bg-color: #171717;
   --logo-color: #171323;
+  --gray-color: #a3a3a3;
   --border-color: rgba(23, 19, 35, 0.12);
   --btn-font: 1.1rem;
-  --h1-text: 7vw;
-  --h4-text: 1rem;
+  --h1-text: 16vw;
+  --h3-text: 8vw;
+  --h4-text: 8vw;
+  --big-text: 8vw;
+  --slide-text: 10vw;
+  --paragraph-text: 1.4vw;
   --text-center: center;
 }
 
@@ -223,7 +231,7 @@ body {
 }
 
 .nav-container {
-  max-width: 85%;
+  max-width: 100%;
   margin: 0 auto;
   position: relative;
 }
@@ -273,13 +281,42 @@ body {
 
 .title {
   font-size: var(--h1-text);
-  font-weight: 600;
+  font-weight: bold;
+  font-family: var(--i-bold);
+}
+
+.slide-title {
+  font-size: var(--slide-text);
+  font-weight: bold;
   font-family: var(--i-bold);
 }
 
 .sub-title {
   font-size: var(--h4-text);
   font-weight: 600;
+}
+
+.half-side {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.mini-title {
+  font-family: var(--i-thin);
+  font-weight: 600;
+  font-size: var(--h3-text);
+}
+
+.paragraph {
+  color: var(--gray-color);
+  font-weight: 500;
+  line-height: 1.8;
+  font-size: var(--paragraph-text);
+}
+
+.big-title {
+  font-size: var(--big-text);
+  font-weight: 500;
 }
 
 /* wrapper and scroll container */
@@ -301,7 +338,6 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  background: var(--theme-color);
   width: 2rem;
   height: 2rem;
   transform-origin: center;
@@ -311,10 +347,18 @@ body {
   user-select: none;
   pointer-events: none;
   z-index: 1000;
+  border: 2px solid var(--theme-color);
   font-size: 1rem;
   color: var(--theme-color);
   font-family: var(--i-bold);
-  transition: background 0.2s ease-in-out, transform 0.15s linear;
+  transition: transform 0.15s linear;
+}
+
+.cursor.active {
+  mix-blend-mode: overlay;
+  opacity: 0.6;
+  border: none;
+  background-color: var(--theme-color);
 }
 
 .cursor p {
@@ -351,39 +395,51 @@ body {
   height: fit-content !important;
   transform: translate3d(0, 0, 0);
   transition: transform 0.5s ease-in-out;
+  padding: 0 5vw 0 0;
 }
 
-html[data-direction="down"] .nav {
+.nav[data-direction="down"] {
   transform: translate3d(0, -100%, 0);
 }
 
 .nav .nav-container {
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--border-color);
+  align-items: flex-end;
+  /* border-bottom: 1px solid var(--border-color); */
 }
 
 .nav .nav-container a.logo-btn {
-  width: 3rem;
-  height: 4rem;
+  width: 5vw;
+  height: 12vh;
+  background-color: var(--white-color);
+  color: var(--black-color);
+  overflow: hidden;
+}
+
+.nav .nav-container a.logo-btn:hover::after {
+  transform: translateY(0);
+}
+
+.nav .nav-container a.logo-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--light-theme-color);
+  mix-blend-mode: difference;
+  transform: translateY(100%);
+  transition: all 2s ease;
 }
 
 .nav .nav-container a.logo-btn h1 {
-  font-size: 3rem;
-}
-
-.nav .nav-container a.logo-btn .ball {
-  width: 0.6rem;
-  height: 0.6rem;
-  border-radius: 50%;
-  background-color: var(--theme-color);
-  position: absolute;
-  bottom: 1.2rem;
-  right: 0;
+  font-size: 6vw;
+  font-weight: 700;
 }
 
 .nav .nav-container .nav-links {
   position: relative;
-  width: 15rem;
+  width: 18rem;
   height: 2rem;
 }
 
@@ -391,6 +447,7 @@ html[data-direction="down"] .nav {
   font-size: var(--btn-font);
   font-weight: 500;
   padding: 0.2rem 0;
+  letter-spacing: 2px;
 }
 
 .nav .nav-container .nav-links a::after {
@@ -416,3 +473,34 @@ html[data-direction="down"] .nav {
 }
 
 /* navbar end */
+
+/* scroll down btn start */
+
+.round {
+  position: fixed;
+  bottom: 4vh;
+  right: 5vw;
+  z-index: 10;
+  font-size: 1vw;
+  word-wrap: 5px;
+  animation: roll 10s linear infinite;
+  transition: all 0.5s ease;
+  cursor: pointer;
+  transform-origin: center;
+  font-family: var(--i-bold);
+}
+
+.round:hover {
+  color: var(--theme-color);
+}
+
+@keyframes roll {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+/* scroll down btn end */
