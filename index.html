@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-direction>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -7,283 +7,139 @@
     <title>Document</title>
     <link rel="stylesheet" href="./css/home.css" />
   </head>
-  <body class="loading">
-    <!-- loader start -->
-    <div class="loader full-size" id="loader">
-      <div class="text-box loader-plate">
-        <h1 class="mini-title" data-splitting>LOADING</h1>
-      </div>
-    </div>
-    <!-- loader end -->
-
-    <!-- nav bar start -->
-    <nav class="nav full-size" id="nav" data-scroll data-direction>
+  <body class="loading" data-barba="wrapper">
+    <nav class="nav" id="nav">
       <div class="nav-container row full-size">
-        <a href="#" class="logo-btn center-item">
-          <h1 class="logo-text">J</h1>
+        <a href="#" class="logo flex" id="logo">
+          <span class="logo-char">J</span>
+          <p class="para" data-splitting>eet.</p>
         </a>
-        <div class="nav-links row">
-          <a href="#" class="nav-btn btn">Projects</a>
-          <a href="#" class="nav-btn btn">About</a>
-          <a href="#" class="nav-btn btn">Contact</a>
+        <div class="nav-links">
+          <a href="#" class="btn hover-btn">About</a>
+          <a href="#" class="btn hover-btn">Contact</a>
         </div>
       </div>
     </nav>
-    <!-- nav bar end -->
-    <!-- scroll down btn start -->
-    <p class="round" id="round">SCROLL TO EXPLORE</p>
-    <!-- scroll down btn end -->
-    <!-- wrapper start -->
+
+    <!-- social links start -->
+    <div class="social-links">
+      <a href="#" class="btn">
+        <p class="para" data-splitting>Github</p>
+        <img src="./images/github.svg" class="icon" alt="error" />
+      </a>
+      <a href="#" class="btn">
+        <p class="para" data-splitting>Dribbble</p>
+        <img src="./images/dribbble.svg" class="icon" alt="error" />
+      </a>
+      <a href="#" class="btn">
+        <p class="para" data-splitting>Facebook</p>
+        <img src="./images/facebook.svg" class="icon" alt="error" />
+      </a>
+    </div>
+    <!-- social links end -->
+    <!-- copyright start -->
+    <div class="copyright">
+      <p class="para">
+        Design by : <a href="#" class="btn hover-btn">@devilx1404</a>
+      </p>
+      <p class="para">
+        Develop by : <a href="#" class="btn hover-btn">@Maggix1404</a>
+      </p>
+    </div>
+    <!-- copyright end -->
+
     <div class="wrapper" id="wrapper">
-      <!-- scroll container start -->
       <div class="scroll__container" id="scroll__container">
-        <!-- banner start -->
-        <div class="banner full-size section skew-el" id="banner">
+        <div class="banner section full-size skew-el" id="banner">
           <div class="nav-container">
             <div class="menu">
-              <h1 class="title item">I can</h1>
-              <h1 class="title item">Create a</h1>
-              <h1 class="title item">Awesome</h1>
-              <h1 class="title item">and Cool</h1>
-              <h1 class="title menu__item">Stuffs</h1>
-              <h1 class="title menu__item">Using Mind.</h1>
+              <a class="menu__item" data-img="./images/project-0.png">
+                <span class="menu__item-text"
+                  ><span class="menu__item-textinner" data-splitting
+                    >Mark-Kay</span
+                  ></span
+                >
+                <span class="menu__item-sub" data-splitting>2021</span>
+              </a>
+              <a class="menu__item" data-img="./images/project-1.png">
+                <span class="menu__item-text"
+                  ><span class="menu__item-textinner" data-splitting
+                    >Evil-Studio</span
+                  ></span
+                >
+                <span class="menu__item-sub" data-splitting>2021</span>
+              </a>
+              <a class="menu__item" data-img="./images/project-2.png">
+                <span class="menu__item-text"
+                  ><span class="menu__item-textinner" data-splitting
+                    >Portfolio-21</span
+                  ></span
+                >
+                <span class="menu__item-sub" data-splitting>2021</span>
+              </a>
+              <a class="menu__item" data-img="./images/project-3.png">
+                <span class="menu__item-text"
+                  ><span class="menu__item-textinner" data-splitting
+                    >Ecoland</span
+                  ></span
+                >
+                <span class="menu__item-sub" data-splitting>2021</span>
+              </a>
+              <a class="menu__item" data-img="./images/project-4.png">
+                <span class="menu__item-text"
+                  ><span class="menu__item-textinner" data-splitting
+                    >ClouxGame</span
+                  ></span
+                >
+                <span class="menu__item-sub" data-splitting>2021</span>
+              </a>
+              <a class="menu__item" data-img="./images/project-5.png">
+                <span class="menu__item-text"
+                  ><span class="menu__item-textinner" data-splitting
+                    >Animals</span
+                  ></span
+                >
+                <span class="menu__item-sub" data-splitting>2021</span>
+              </a>
+              <a class="menu__item" data-img="./images/project-6.png">
+                <span class="menu__item-text"
+                  ><span class="menu__item-textinner" data-splitting
+                    >Vultures</span
+                  ></span
+                >
+                <span class="menu__item-sub" data-splitting>2020</span>
+              </a>
+              <a class="menu__item" data-img="./images/project-7.png">
+                <span class="menu__item-text"
+                  ><span class="menu__item-textinner" data-splitting
+                    >TripWithUs</span
+                  ></span
+                >
+                <span class="menu__item-sub" data-splitting>2020</span>
+              </a>
+              <a class="menu__item" data-img="./images/project-8.png">
+                <span class="menu__item-text"
+                  ><span class="menu__item-textinner" data-splitting
+                    >DineOut</span
+                  ></span
+                >
+                <span class="menu__item-sub" data-splitting>2020</span>
+              </a>
+              <a class="menu__item" data-img="./images/project-9.png">
+                <span class="menu__item-text"
+                  ><span class="menu__item-textinner" data-splitting
+                    >Skyscanner</span
+                  ></span
+                >
+                <span class="menu__item-sub" data-splitting>2020</span>
+              </a>
             </div>
           </div>
         </div>
-        <!-- banner end -->
-        <!-- project start -->
-        <div class="project section full-size center-item skew-el" id="project">
-          <div class="slider">
-            <div data-glide-el="track" class="glide__track">
-              <div class="glide__slides">
-                <!-- slides start -->
-                <div class="slide row">
-                  <div class="img-side">
-                    <div
-                      class="curtain"
-                      data-vs-id="plane-vs"
-                      data-fs-id="plane-fs"
-                    >
-                      <img
-                        class="slide-img"
-                        src="./images/project-1.jpg"
-                        alt="error"
-                        data-sampler="image"
-                        crossorigin="anonymous"
-                      />
-                    </div>
-                  </div>
-                  <div class="slide-content">
-                    <h1 class="mini-title"><span>.</span>1</h1>
-                    <p class="paragraph" data-splitting>Development</p>
-                    <p class="paragraph" data-splitting>Animations</p>
-                    <p class="paragraph" data-splitting>Motion</p>
-                  </div>
-                  <!-- slides titles start -->
-                  <div class="text-box slide-titles">
-                    <h1 class="slide-title" data-splitting>MARY-KAY</h1>
-                  </div>
-                  <!-- slides titles end -->
-                </div>
-                <div class="slide row">
-                  <div class="img-side">
-                    <div
-                      class="curtain"
-                      data-vs-id="plane-vs"
-                      data-fs-id="plane-fs"
-                    >
-                      <img
-                        class="slide-img"
-                        src="./images/project-1.jpg"
-                        alt="error"
-                        data-sampler="image"
-                        crossorigin="anonymous"
-                      />
-                    </div>
-                  </div>
-                  <div class="slide-content">
-                    <h1 class="mini-title"><span>.</span>2</h1>
-                    <p class="paragraph" data-splitting>Development</p>
-                    <p class="paragraph" data-splitting>Animations</p>
-                    <p class="paragraph" data-splitting>Motion</p>
-                  </div>
-                  <!-- slides titles start -->
-                  <div class="text-box slide-titles">
-                    <h1 class="slide-title" data-splitting>Evil-Studio</h1>
-                  </div>
-                  <!-- slides titles end -->
-                </div>
-                <div class="slide row">
-                  <div class="img-side">
-                    <div
-                      class="curtain"
-                      data-vs-id="plane-vs"
-                      data-fs-id="plane-fs"
-                    >
-                      <img
-                        class="slide-img"
-                        src="./images/project-1.jpg"
-                        alt="error"
-                        data-sampler="image"
-                        crossorigin="anonymous"
-                      />
-                    </div>
-                  </div>
-                  <div class="slide-content">
-                    <h1 class="mini-title"><span>.</span>3</h1>
-                    <p class="paragraph" data-splitting>Development</p>
-                    <p class="paragraph" data-splitting>Animations</p>
-                    <p class="paragraph" data-splitting>Motion</p>
-                  </div>
-                  <!-- slides titles start -->
-                  <div class="text-box slide-titles">
-                    <h1 class="slide-title" data-splitting>Ecoland</h1>
-                  </div>
-                  <!-- slides titles end -->
-                </div>
-                <!-- slides end -->
-              </div>
-              <!-- slider controls start -->
-              <div class="glide">
-                <div class="glide__arrows" data-glide-el="controls">
-                  <button
-                    class="glide__arrow center-item glide__arrow--prev"
-                    data-glide-dir="<"
-                  >
-                    <svg
-                      width="79"
-                      height="55"
-                      viewBox="0 0 79 55"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M4.1311 25.7544H76"
-                        stroke="white"
-                        stroke-width="5"
-                        stroke-linecap="round"
-                        class="line"
-                      />
-                      <path
-                        d="M3 25.5L32.5 3"
-                        stroke="white"
-                        stroke-width="5"
-                        stroke-linecap="round"
-                      />
-                      <path
-                        d="M32.4346 48.5854L3.06613 25.914"
-                        stroke="white"
-                        stroke-width="5"
-                        stroke-linecap="round"
-                      />
-                    </svg>
-                  </button>
-                  <button
-                    class="glide__arrow center-item glide__arrow--next"
-                    data-glide-dir=">"
-                  >
-                    <svg
-                      width="79"
-                      height="55"
-                      viewBox="0 0 79 55"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M4.1311 25.7544H76"
-                        stroke="white"
-                        stroke-width="5"
-                        stroke-linecap="round"
-                        class="line"
-                      />
-                      <path
-                        d="M3 25.5L32.5 3"
-                        stroke="white"
-                        stroke-width="5"
-                        stroke-linecap="round"
-                      />
-                      <path
-                        d="M32.4346 48.5854L3.06613 25.914"
-                        stroke="white"
-                        stroke-width="5"
-                        stroke-linecap="round"
-                      />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-              <!-- slider controls end -->
-            </div>
-          </div>
-          <!-- notice start -->
-          <p class="paragraph notice">HOLD AND DRAG</p>
-          <!-- notice end -->
-        </div>
-        <!-- project end -->
-        <!-- footer start -->
-        <footer class="footer skew-el" id="footer">
-          <div class="container full-size center-item">
-            <div class="footer-links row">
-              <a href="#" class="footer-btn">
-                <img
-                  src="./images/facebook.svg"
-                  alt="error"
-                  class="social-icons"
-                />
-              </a>
-              <a href="#" class="footer-btn">
-                <img
-                  src="./images/dribble.svg"
-                  alt="error"
-                  class="social-icons"
-                />
-              </a>
-              <a
-                href="https://github.com/MAGGIx1404"
-                target="blank"
-                class="footer-btn"
-              >
-                <img
-                  src="./images/github.svg"
-                  alt="error"
-                  class="social-icons"
-                />
-              </a>
-            </div>
-            <!-- copyright start -->
-            <p class="paragraph">
-              DESIGN by :
-              <a
-                href="https://github.com/Priyanshu2055"
-                target="blank"
-                class="footer-btn link"
-                >@DEVILx1707</a
-              >
-              <br />
-              DEVLOP by :
-              <a
-                href="https://github.com/MAGGIx1404"
-                target="blank"
-                class="footer-btn link"
-                >@MAGGIx1404</a
-              >
-            </p>
-            <!-- copyright end -->
-          </div>
-        </footer>
-        <!-- footer end -->
       </div>
-      <!-- scroll container end -->
     </div>
-    <!-- wrapper end -->
 
-    <!-- custom cursor start -->
-    <div class="cursor" id="cursor"></div>
-    <div class="shapes">
-      <div class="shape"></div>
-    </div>
-    <!-- custom cursor end -->
-
-    <script src="./javascript/index.js" type="module"></script>
+    <script src="./js/loaderTransition.js"></script>
+    <script src="./js/index.js"></script>
   </body>
 </html>
