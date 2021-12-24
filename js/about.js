@@ -4,6 +4,7 @@ import Splitting from "splitting";
 import customScroll from "./scroll";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import customCursor from "./cursor";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,6 +16,7 @@ window.addEventListener("load", function () {
 });
 
 function init() {
+  customCursor();
   loadAnimation();
   Splitting();
   customScroll();

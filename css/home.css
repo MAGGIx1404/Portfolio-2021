@@ -195,8 +195,73 @@
   position: fixed;
   top: 0;
   left: 0;
+  transform: translateY(100%);
   width: 100%;
+  opacity: 0;
   height: 100%;
   z-index: 100;
-  background-color: var(--white-color);
+  background-color: var(--light-theme-color);
+  padding: 10vh 0;
+}
+
+.contact::after {
+  content: "";
+  position: absolute;
+  transform-origin: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 4px;
+  background-color: var(--theme-color);
+  z-index: -1;
+}
+
+.contact .nav-container {
+  width: 90%;
+  height: 80vh;
+  background-color: var(--light-color);
+  border: 4px solid var(--theme-color);
+}
+
+.contact .nav-container a {
+  font-size: 10vw;
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  color: transparent;
+  -webkit-text-stroke: 4px var(--theme-color);
+}
+
+.contact .nav-container a:after {
+  height: 4px;
+}
+
+.contact .nav-container a:hover {
+  color: var(--theme-color);
+}
+
+.contact .nav-container p {
+  font-size: 2vw;
+  font-weight: 800;
+  margin-top: 4vh;
+  color: var(--theme-color);
+}
+
+.contact button {
+  position: absolute;
+  top: 3%;
+  left: 50%;
+  transform: translate(-50%, -3%);
+  background-color: transparent;
+  transform-origin: center;
+  font-size: 1.6vw;
+  font-weight: 800;
+  font-family: "Poppins", sans-serif;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--theme-color);
+}
+
+.contact button:hover {
+  color: var(--theme-color);
+  -webkit-text-stroke: 1px;
 }
