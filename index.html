@@ -7,22 +7,30 @@
     <title>Document</title>
     <link rel="stylesheet" href="./css/home.css" />
   </head>
-  <body class="loading" data-barba="wrapper">
-    <nav class="nav" id="nav">
+  <body class="loading transition-fade" id="swup">
+    <!-- loader start -->
+
+    <div class="loader" id="loader"></div>
+
+    <!-- loader end -->
+
+    <nav class="nav extra" id="nav">
       <div class="nav-container row full-size">
         <a href="#" class="logo flex" id="logo">
           <span class="logo-char">J</span>
           <p class="para" data-splitting>eet.</p>
         </a>
         <div class="nav-links">
-          <a href="#" class="btn hover-btn">About</a>
+          <a href="./pages/about.html" class="btn hover-btn transition-btn"
+            >About</a
+          >
           <a href="#" class="btn hover-btn">Contact</a>
         </div>
       </div>
     </nav>
 
     <!-- social links start -->
-    <div class="social-links">
+    <div class="social-links extra">
       <a href="#" class="btn">
         <p class="para" data-splitting>Github</p>
         <img src="./images/github.svg" class="icon" alt="error" />
@@ -38,7 +46,7 @@
     </div>
     <!-- social links end -->
     <!-- copyright start -->
-    <div class="copyright">
+    <div class="copyright extra">
       <p class="para">
         Design by : <a href="#" class="btn hover-btn">@devilx1404</a>
       </p>
@@ -47,13 +55,18 @@
       </p>
     </div>
     <!-- copyright end -->
+    <!-- scroll start -->
+    <div class="scroll extra">
+      <p class="para">SCROLL DOWN</p>
+    </div>
+    <!-- scroll end -->
 
     <div class="wrapper" id="wrapper">
       <div class="scroll__container" id="scroll__container">
         <div class="banner section full-size skew-el" id="banner">
           <div class="nav-container">
             <div class="menu">
-              <a class="menu__item" data-img="./images/project-0.png">
+              <a class="menu__item" data-img="./images/menu/project-0.png">
                 <span class="menu__item-text"
                   ><span class="menu__item-textinner" data-splitting
                     >Mark-Kay</span
@@ -61,7 +74,7 @@
                 >
                 <span class="menu__item-sub" data-splitting>2021</span>
               </a>
-              <a class="menu__item" data-img="./images/project-1.png">
+              <a class="menu__item" data-img="./images/menu/project-1.png">
                 <span class="menu__item-text"
                   ><span class="menu__item-textinner" data-splitting
                     >Evil-Studio</span
@@ -69,7 +82,7 @@
                 >
                 <span class="menu__item-sub" data-splitting>2021</span>
               </a>
-              <a class="menu__item" data-img="./images/project-2.png">
+              <a class="menu__item" data-img="./images/menu/project-2.png">
                 <span class="menu__item-text"
                   ><span class="menu__item-textinner" data-splitting
                     >Portfolio-21</span
@@ -77,7 +90,7 @@
                 >
                 <span class="menu__item-sub" data-splitting>2021</span>
               </a>
-              <a class="menu__item" data-img="./images/project-3.png">
+              <a class="menu__item" data-img="./images/menu/project-3.png">
                 <span class="menu__item-text"
                   ><span class="menu__item-textinner" data-splitting
                     >Ecoland</span
@@ -85,7 +98,7 @@
                 >
                 <span class="menu__item-sub" data-splitting>2021</span>
               </a>
-              <a class="menu__item" data-img="./images/project-4.png">
+              <a class="menu__item" data-img="./images/menu/project-4.png">
                 <span class="menu__item-text"
                   ><span class="menu__item-textinner" data-splitting
                     >ClouxGame</span
@@ -93,7 +106,7 @@
                 >
                 <span class="menu__item-sub" data-splitting>2021</span>
               </a>
-              <a class="menu__item" data-img="./images/project-5.png">
+              <a class="menu__item" data-img="./images/menu/project-5.png">
                 <span class="menu__item-text"
                   ><span class="menu__item-textinner" data-splitting
                     >Animals</span
@@ -101,7 +114,7 @@
                 >
                 <span class="menu__item-sub" data-splitting>2021</span>
               </a>
-              <a class="menu__item" data-img="./images/project-6.png">
+              <a class="menu__item" data-img="./images/menu/project-6.png">
                 <span class="menu__item-text"
                   ><span class="menu__item-textinner" data-splitting
                     >Vultures</span
@@ -109,7 +122,7 @@
                 >
                 <span class="menu__item-sub" data-splitting>2020</span>
               </a>
-              <a class="menu__item" data-img="./images/project-7.png">
+              <a class="menu__item" data-img="./images/menu/project-7.png">
                 <span class="menu__item-text"
                   ><span class="menu__item-textinner" data-splitting
                     >TripWithUs</span
@@ -117,7 +130,7 @@
                 >
                 <span class="menu__item-sub" data-splitting>2020</span>
               </a>
-              <a class="menu__item" data-img="./images/project-8.png">
+              <a class="menu__item" data-img="./images/menu/project-8.png">
                 <span class="menu__item-text"
                   ><span class="menu__item-textinner" data-splitting
                     >DineOut</span
@@ -125,7 +138,7 @@
                 >
                 <span class="menu__item-sub" data-splitting>2020</span>
               </a>
-              <a class="menu__item" data-img="./images/project-9.png">
+              <a class="menu__item" data-img="./images/menu/project-9.png">
                 <span class="menu__item-text"
                   ><span class="menu__item-textinner" data-splitting
                     >Skyscanner</span
@@ -139,7 +152,16 @@
       </div>
     </div>
 
-    <script src="./js/loaderTransition.js"></script>
-    <script src="./js/index.js"></script>
+    <!-- contact section start -->
+    <div class="contact">
+      <div class="nav-container">
+        <a href="#" class="btn hover-btn"> Let's Chat </a>
+        <p class="para">jeetpatel0070070@gmail.com</p>
+      </div>
+    </div>
+    <!-- contact section end -->
+
+    <script src="./js/transition.js" type="module"></script>
+    <script src="./js/index.js" type="module"></script>
   </body>
 </html>

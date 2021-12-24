@@ -181,7 +181,7 @@ body {
   overscroll-behavior: none;
   font-family: "Poppins", sans-serif;
   color: var(--bg-color);
-  background-color: var(--white-color);
+  background-color: var(--light-theme-color);
   transition: background-color 0.3s ease;
 }
 
@@ -199,18 +199,19 @@ body {
   --white-color: #fff;
   --theme-color: #ff3a00; /*#ff6745*/
   --light-theme-color: #f4d8cc;
+  --loader-color: #ff7045;
   --bg-color: #171717;
   --logo-color: #171323;
   --gray-color: #a3a3a3;
   --light-color: #f3f0d3;
   --border-color: rgba(23, 19, 35, 0.12);
   --btn-font: 1.5vw;
-  --h1-text: 16vw;
+  --h1-text: 18vw;
   --h3-text: 8vw;
   --h4-text: 8vw;
   --big-text: 3vw;
   --slide-text: 10vw;
-  --paragraph-text: 1.4vw;
+  --paragraph-text: 7vw;
   --text-center: center;
 }
 
@@ -561,4 +562,47 @@ body {
 .copyright p a:hover::after {
   transform: scaleX(0);
   transform-origin: right;
+}
+
+/* scroll */
+
+.scroll {
+  position: fixed;
+  bottom: 5vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: fit-content;
+  height: fit-content;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.scroll p {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--theme-color);
+}
+
+/* loader */
+
+body.loading .loader {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  background-color: var(--loader-color);
+  transform: translateY(0);
+  transition: all 1s ease;
+}
+
+body.loaded .loader {
+  transform: translateY(-100%);
+}
+
+/* loading animation */
+
+::selection {
+  background-color: var(--light-color);
 }

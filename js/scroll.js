@@ -60,7 +60,7 @@ function customScroll() {
 
   let proxy = { skew: 0 },
     skewSetter = gsap.quickSetter(".skew-el", "skewY", "deg"), // fast
-    clamp = gsap.utils.clamp(-8, 8); // don't let the skew go beyond 20 degrees.
+    clamp = gsap.utils.clamp(-3, 3); // don't let the skew go beyond 20 degrees.
 
   ScrollTrigger.create({
     scroller: "#scroll__container",
@@ -74,7 +74,7 @@ function customScroll() {
         gsap.to(proxy, {
           skew: 0,
           duration: 0.4,
-          ease: "power3",
+          ease: "back",
           overwrite: true,
           onUpdate: () => skewSetter(proxy.skew),
         });

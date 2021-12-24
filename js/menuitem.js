@@ -1,6 +1,6 @@
 import { gsap } from "gsap";
 import { map, lerp, clamp, getMousePos } from "./utils";
-const images = Object.entries(require("../images/*.png"));
+const images = Object.entries(require("../images/menu/*.png"));
 
 // track the mouse position
 let mousepos = { x: 0, y: 0 };

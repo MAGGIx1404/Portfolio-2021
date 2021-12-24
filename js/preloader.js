@@ -18,6 +18,7 @@ export const preloader = (selector) => {
     imagesLoaded(document.querySelectorAll(".preload"), () => {
       imgwrap.parentNode.removeChild(imgwrap);
       body.classList.remove("loading");
+      body.classList.add("loaded");
       resolve();
     });
   });
