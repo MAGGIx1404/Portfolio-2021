@@ -34,6 +34,12 @@ function customScroll() {
     touchMultiplier: 2,
     scrollFromAnywhere: false,
   });
+  window.addEventListener("load", function () {
+    scroller.update();
+  });
+  window.addEventListener("resize", function () {
+    scroller.update();
+  });
 
   // skew effect on scroll
   scroller.on("scroll", ScrollTrigger.update);
@@ -60,7 +66,7 @@ function customScroll() {
 
   let proxy = { skew: 0 },
     skewSetter = gsap.quickSetter(".skew-el", "skewY", "deg"), // fast
-    clamp = gsap.utils.clamp(-3, 3); // don't let the skew go beyond 20 degrees.
+    clamp = gsap.utils.clamp(-2, 2); // don't let the skew go beyond 20 degrees.
 
   ScrollTrigger.create({
     scroller: "#scroll__container",

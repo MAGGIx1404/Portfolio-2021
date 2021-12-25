@@ -387,9 +387,54 @@ body {
   opacity: 0;
   will-change: transform;
   position: absolute;
+  width: 20rem;
+  height: 20rem;
+  margin: -10rem 0 0 -10rem;
+  transition: opacity 0.5s ease;
+}
+
+.shape.chat {
+  opacity: 0.6 !important;
+  will-change: transform;
+  position: absolute;
   background: url(../images/contact.gif) no-repeat;
   background-position: center;
   background-size: cover;
+  width: 20rem;
+  height: 20rem;
+  margin: -10rem 0 0 -10rem;
+}
+
+.shape.active {
+  opacity: 0.6 !important;
+  will-change: transform;
+  position: absolute;
+  background: url(../images/game.gif) no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 20rem;
+  height: 20rem;
+  margin: -10rem 0 0 -10rem;
+}
+
+.shape.open {
+  opacity: 0.6 !important;
+  will-change: transform;
+  position: absolute;
+  background: url(../images/it.gif) no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 20rem;
+  height: 20rem;
+  margin: -10rem 0 0 -10rem;
+}
+.shape.web {
+  opacity: 0.6 !important;
+  will-change: transform;
+  position: absolute;
+  background: url(../images/web.gif) no-repeat;
+  background-position: center;
+  background-size: contain;
   width: 20rem;
   height: 20rem;
   margin: -10rem 0 0 -10rem;
@@ -604,4 +649,30 @@ body {
 
 ::selection {
   background-color: var(--light-color);
+}
+
+/* media querry */
+
+@media only screen and (max-width: 950px) {
+  :root {
+    --btn-font: 1.6rem;
+    --big-text: 3rem;
+  }
+  .nav .nav-container .logo p {
+    font-size: 1.6rem;
+  }
+}
+@media only screen and (max-width: 850px) {
+  .cursor,
+  .shapes {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .scroll {
+    opacity: 0;
+    visibility: hidden;
+  }
 }

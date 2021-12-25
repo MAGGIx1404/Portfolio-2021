@@ -35,21 +35,12 @@ function customCursor() {
   });
 
   const chat = document.querySelector(".chatbtn");
+  const shape = document.querySelector(".shape");
   chat.addEventListener("mousemove", function () {
-    gsap.to(chat, {
-      zIndex: 100000,
-    });
-    gsap.to(".shape", 0.6, {
-      opacity: 1,
-    });
+    shape.classList.add("chat");
   });
   chat.addEventListener("mouseleave", function () {
-    gsap.to(chat, {
-      zIndex: 1,
-    });
-    gsap.to(".shape", 0.6, {
-      opacity: 0,
-    });
+    shape.classList.remove("chat");
   });
 }
 

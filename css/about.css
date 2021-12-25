@@ -95,6 +95,7 @@
 
 .about {
   padding-bottom: 10vh;
+  position: relative;
 }
 
 .about .nav-container .text-box p {
@@ -108,6 +109,7 @@
 .about .nav-container .text-box p span {
   color: var(--theme-color);
   position: relative;
+  overflow: visible;
 }
 
 .about .nav-container .text-box p span:hover {
@@ -156,3 +158,5 @@
   margin-top: 5vh;
   color: var(--theme-color);
 }
+
+/* media quarries */

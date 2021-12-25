@@ -22,6 +22,7 @@ function init() {
   customScroll();
   skills();
   awwwards();
+  hoverEffect();
 }
 
 function skills() {
@@ -121,4 +122,33 @@ function loadAnimation() {
     },
     "-=0.2"
   );
+}
+
+// hover
+
+function hoverEffect() {
+  const itemThree = select(".web");
+  const itemTwo = selectAll(".hover-two");
+  const itemOne = document.querySelector(".item-hover");
+  const shape = select(".shape");
+  itemOne.addEventListener("mousemove", function () {
+    shape.classList.add("active");
+  });
+  itemOne.addEventListener("mouseleave", function () {
+    shape.classList.remove("active");
+  });
+  itemTwo.forEach((ele) => {
+    ele.addEventListener("mousemove", function () {
+      shape.classList.add("open");
+    });
+    ele.addEventListener("mouseleave", function () {
+      shape.classList.remove("open");
+    });
+  });
+  itemThree.addEventListener("mouseover", function () {
+    shape.classList.add("web");
+  });
+  itemThree.addEventListener("mouseleave", function () {
+    shape.classList.remove("web");
+  });
 }
