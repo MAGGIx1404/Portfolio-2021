@@ -9,7 +9,7 @@ const nav = document.querySelectorAll(".extra");
 function loading() {
   const tl = gsap.timeline();
 
-  tl.to(wrapper, 0.5, {
+  tl.to(wrapper, 0.4, {
     opacity: 0,
   });
   tl.to(
