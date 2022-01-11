@@ -1,0 +1,123 @@
+.case__header {
+}
+
+.case__media {
+  @include ratio(1366, 768);
+
+  margin: auto;
+  width: 100%;
+}
+
+.case__media__image {
+  @extend %cover;
+
+  opacity: 0;
+  transition: opacity 1.5s $ease-out-expo;
+
+  .mobile .case--active & {
+    opacity: 1;
+  }
+}
+
+.case__header__content {
+  text-align: center;
+  margin: auto;
+  width: 40%;
+}
+
+.case__title {
+  font-size: 10vw;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+  color: transparent;
+  -webkit-text-stroke: 3px $color-iron;
+  transition: color 0.5s ease, text-shadow 0.5s ease;
+  text-shadow: 4px 5px 0px rgba($color: $color-iron, $alpha: 0.5),
+    5px 6px 0px rgba($color: $color-iron, $alpha: 0.3);
+  overflow: hidden;
+  padding: 0 1rem;
+  position: relative;
+  text-align: center;
+  transform: translateY(50%);
+  white-space: nowrap;
+  z-index: 1;
+
+  @include media("<=phone") {
+    font-size: 5rem;
+    -webkit-text-stroke: 2px $color-iron;
+    text-shadow: 2px 3px 0px rgba($color: $color-iron, $alpha: 0.5),
+      3px 4px 0px rgba($color: $color-iron, $alpha: 0.3);
+    white-space: inherit;
+  }
+}
+
+.case__title__text {
+  display: block;
+  transform: translateY(100%);
+  transition: transform 1.5s 1s $ease-out-expo;
+
+  .mobile & {
+    transition-delay: 0s;
+  }
+
+  .case--active & {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.case__information {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 10rem auto;
+  max-width: 144rem;
+  opacity: 0;
+  transition: opacity 0.4s 1s ease;
+  width: 90%;
+
+  .mobile & {
+    transition-delay: 0s;
+  }
+
+  .case--active & {
+    opacity: 1;
+  }
+
+  @include media("<=phone") {
+    margin: 5rem auto;
+  }
+}
+
+.case__information__detail {
+  font-size: 3rem;
+  font-weight: bold;
+
+  &:nth-child(4) {
+    margin-top: 5rem;
+    width: 100%;
+  }
+
+  @include media("<=phone") {
+    font-size: 1.6rem;
+    width: 50%;
+
+    &:nth-child(3),
+    &:nth-child(4) {
+      margin-top: 2.5rem;
+      width: 100%;
+    }
+  }
+}
+
+.case__information__detail__title {
+  display: block;
+  font-size: 2rem;
+  font-weight: bold;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba($color: $color-iron, $alpha: 1);
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}

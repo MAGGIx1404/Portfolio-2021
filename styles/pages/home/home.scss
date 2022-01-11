@@ -1,0 +1,146 @@
+.home {
+  @extend %cover;
+  @extend %page;
+
+  overflow: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+
+  &--active {
+    @extend %page--active;
+  }
+
+  // &:after {
+  //   background: #f0f;
+  //   content: '';
+  //   height: 100%;
+  //   left: 50%;
+  //   position: absolute;
+  //   transform: translateX(-50%);
+  //   width: 1.5rem;
+  // }
+}
+
+.home__background {
+  @extend %cover;
+
+  color: $color-pine-tree;
+  display: none;
+  pointer-events: none;
+  z-index: 10;
+
+  &__top,
+  &__bottom {
+    background: currentColor;
+    content: "";
+    display: block;
+    height: 10rem;
+    position: absolute;
+    width: 100%;
+  }
+
+  &__top {
+    background: linear-gradient(to bottom, currentColor 0%, transparent 100%);
+    top: 0;
+  }
+
+  &__bottom {
+    background: linear-gradient(to bottom, transparent 0%, currentColor 100%);
+    bottom: 0;
+  }
+
+  @include media("<=phone") {
+    display: block;
+  }
+}
+
+.home__wrapper {
+  @extend %cover;
+}
+
+.home__list {
+  & .home__item {
+  }
+}
+
+.home__item {
+  // font: 15rem/0.9;
+  font-size: 10vw;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+  padding: 1vh 0 1vh 2vw;
+
+  @include media("<=phone") {
+    font-size: 12vw;
+    padding: 2vh 0 2vh 2vw;
+  }
+}
+
+.home__link {
+  display: block;
+  text-align: left;
+  white-space: nowrap;
+  color: transparent;
+  -webkit-text-stroke: 3px $color-iron;
+  transition: color 0.5s ease, text-shadow 0.5s ease;
+
+  @include media("<=phone") {
+    -webkit-text-stroke: 2px rgba($color: $color-iron, $alpha: 1) !important;
+
+    &:hover {
+      text-shadow: 2px 3px 0px rgba($color: $color-iron, $alpha: 0.5),
+        3px 4px 0px rgba($color: $color-iron, $alpha: 0.3);
+    }
+  }
+
+  &:hover {
+    text-shadow: 4px 5px 0px rgba($color: $color-iron, $alpha: 0.5),
+      5px 6px 0px rgba($color: $color-iron, $alpha: 0.3);
+  }
+}
+
+.home__link__wrapper {
+  display: inline-block;
+  pointer-events: none;
+  position: relative;
+
+  @include media("<=phone") {
+    transform: none !important;
+    width: 100%;
+  }
+}
+
+.home__link__media {
+  background: $color-iron;
+  bottom: 2.2rem;
+  height: 17rem;
+  margin: 0 1rem;
+  object-fit: cover;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  transition: width 0.4s 0.4s $ease-out-expo;
+  width: 20rem;
+
+  &[data-direction="left"] {
+    right: 100%;
+  }
+
+  &[data-direction="right"] {
+    left: 100%;
+  }
+
+  @include media("<=phone") {
+    bottom: 50%;
+    margin: 0;
+
+    &[data-direction="left"] {
+      right: 50%;
+      transform: translate(50%, 50%);
+    }
+
+    &[data-direction="right"] {
+      left: 50%;
+      transform: translate(-50%, 50%);
+    }
+  }
+}

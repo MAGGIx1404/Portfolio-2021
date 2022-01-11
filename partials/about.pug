@@ -1,0 +1,120 @@
+mixin award(link, date, title, description, project)
+  li.about__section__list__item
+    span.about__section__list__dash(data-animation="line" data-animation-threshold="1" data-animation-target=".about__section__list__item")
+
+    a.about__section__list__link(
+      data-animation="y"
+      data-animation-threshold="1"
+      data-animation-target=".about__section__list__item"
+      href=link target="_blank"
+      rel="noreferrer noopener"
+    )
+      span.about__section__list__column=title
+      span.about__section__list__column=date
+      span.about__section__list__column=project
+      span.about__section__list__column=description
+
+mixin press(link, title, description)
+  li.about__section__list__item
+    span.about__section__list__dash(data-animation="line" data-animation-threshold="1" data-animation-target=".about__section__list__item")
+
+    a.about__section__list__link.about__section__list__link--article(
+      data-animation="y"
+      data-animation-threshold="1"
+      data-animation-target=".about__section__list__item"
+      href=link target="_blank"
+      rel="noreferrer noopener"
+    )
+      span.about__section__list__column=title
+      span.about__section__list__column=description
+
+section.about
+  .about__content
+    .about__wrapper
+      header.about__header
+        h1.about__header__title
+          span.about__header__title__text
+            | #[span Hii !]
+
+          span.about__header__title__text
+            | #[span I am Jeet.]
+          span.about__header__title__text
+            | #[span FRONTEND]
+
+          span.about__header__title__text
+            | #[span DEVELOPER]
+
+      .about__gallery(data-src="/grid.jpg" data-src-webp="/grid.webp")
+        each _, index in Array(24)
+          .about__gallery__media(class=[0, 1, 2, 3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24].indexOf(index) > -1 ? "about__gallery__media--transparent" : "" data-index=index)
+
+
+
+      .about__sections
+        .about__section
+          h2.about__section__title About
+
+          .about__section__content
+            p.about__section__description(data-animation="paragraph")
+              | Hi👋,I'm Jeet and I'm a Frontend Developer from India.
+              | I create creative sites, web apps(not now😜), clones of other sites and sometimes make non-sense projects just for fun😁.
+              | JavaScript is my cup of coffee☕, HTML and CSS is 😉. Sometimes I jump from React to Vue😛.
+
+            p.about__section__description(data-animation="paragraph")
+              | I’m currently studing more and more about JavaScript, ThreeJS, Animations and 3D Stuffs.
+              | I like to Create a Websites and Webapps that are creative and interactive.
+
+        .about__section
+          h2.about__section__title My #[br] Skills😎
+
+          .about__section__content
+            p.about__section__number 15+
+
+            ul.about__section__list
+              +award("https://developer.mozilla.org/en-US/docs/Web/HTML", "HTML")
+              +award("https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Displaying_data/Template_primer", "PUG")
+              +award("https://developer.mozilla.org/en-US/docs/Web/css", "CSS")
+              +award("https://sass-lang.com/", "SCSS")
+              +award("https://sass-lang.com/", "SASS")
+              +award("https://developer.mozilla.org/en-US/docs/Web/javascript", "JAVASCRIPT")
+              +award("https://reactjs.org/", "REACT")
+              +award("https://www.gatsbyjs.com/", "GATSBY JS")
+              +award("https://vuejs.org/", "VUE JS")
+              +award("https://nuxtjs.org/", "NUXT JS")
+              +award("https://nextjs.org/", "NEXT JS")
+              +award("https://www.python.org/", "PYTHON")
+              +award("https://www.djangoproject.com/", "DJANGO")
+              +award("https://www.geeksforgeeks.org/c-programming-language/", "C")
+              +award("https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Cross_browser_testing/Introduction", "WEB ACCESSIBILITY & COMPATIBILITY")
+
+        .about__section
+          h2.about__section__title Tools
+
+          .about__section__content
+            p.about__section__number 14+
+
+            ul.about__section__list
+              +press("https://www.adobe.com/in/products/aftereffects.html","ADOBE AFTER EFFECTS")
+              +press("https://www.adobe.com/in/products/illustrator.html", "ADOBE ILLUSTRATION")
+              +press("https://www.adobe.com/in/products/photoshop-lightroom.html", "ADOBE LIGHTROOM")
+              +press("https://www.adobe.com/in/products/photoshop.html", "ADOBE PHOTOSHOP")
+              +press("https://www.adobe.com/in/products/xd.html", "ADOBE XD")
+              +press("https://www.blender.org/", "BLENDER")
+              +press("https://www.figma.com/", "FIGMA")
+              +press("https://filmora.wondershare.com/","FILMORA Wondershare")
+              +press("https://git-scm.com/","GIT")
+              +press("https://inkscape.org/","INKSCAPE")
+              +press("https://www.autodesk.com/products/maya/overview?term=1-YEAR&tab=subscription","MAYA")
+              +press("https://www.npmjs.com/","NPM")
+              +press("https://code.visualstudio.com/","VS CODE")
+              +press("https://www.sublimetext.com/","SUBLIME TEXT")
+
+        .about__section
+          h2.about__section__title(data-animation="paragraph" data-animation-threshold="1") Contact
+
+          .about__section__content
+            p.about__section__description(data-animation="paragraph" data-animation-threshold="1")
+              | Email : #[a(href="mailto:someone@example.com" rel="noreferrer noopener") jeetpatel0070070@gmail.com] #[br]
+              | #[a(href="https://www.behance.net/yashramoliya" rel="noreferrer noopener" target="_blank") Behance ] #[br]
+              | #[a(href="https://dribbble.com/jeet0070070" rel="noreferrer noopener" target="_blank") Dribbble] #[br]
+              | #[a(href="https://github.com/MAGGIx1404" rel="noreferrer noopener" target="_blank") Github] #[br]

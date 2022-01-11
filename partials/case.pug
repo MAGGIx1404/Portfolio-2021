@@ -1,0 +1,248 @@
+mixin template({ id, title, category, company, role, technologies, link, label, gallery })
+  article.case(id=id)
+    header.case__header
+      h3.case__title
+        span.case__title__text=title
+
+      figure.case__media
+        img.case__media__image(
+          data-src=`/projects/${id}.jpg`
+          data-src-webp=`/projects/${id}.webp`
+        )
+
+    .case__information
+      p.case__information__detail
+        | #[strong.case__information__detail__title Company]
+        | #{company}
+
+      p.case__information__detail
+        | #[strong.case__information__detail__title Role]
+        | #{role}
+
+      p.case__information__detail
+        | #[strong.case__information__detail__title Technologies]
+        | #{technologies}
+
+      if link
+        p.case__information__detail
+          | #[strong.case__information__detail__title #{label}]
+          | #[a(href=link target="_blank" rel="noreferrer noopener") View →]
+
+    .case__gallery
+      each content, index in gallery
+        .case__gallery__media
+          .case__gallery__media__box(style=`max-width: ${content.width / 10}rem;`)
+            span.case__gallery__media__loader
+              span
+              span
+              span
+
+            span.case__gallery__media__placeholder(
+              data-src=`/case/${id}/${content.image}.jpg`
+              data-src-webp=`/case/${id}/${content.image}.webp`
+              style=`padding-top: ${content.height / content.width * 100}%;`
+            )
+
+.cases
+  +template({
+    id: 'mary-kay',
+    title: 'MARY-KAY',
+    company: 'MARY-KAY',
+    role: 'WEB Developer',
+    technologies: 'JAVASCRIPT · LOCOMOTIVE SCROLL · GSAP',
+    label: 'Live URL',
+    link: 'https://rose-maggie.com/',
+    gallery: [
+      { image: '1', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '2', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '3', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '4', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '5', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '6', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '7', type: 'screenshot', height: '1080', width: '1920' }
+    ]
+  })
+
+  +template({
+    id: 'evil-studio',
+    title: 'EVIL-STUDIO',
+    company: 'EVILANCE',
+    role: 'WEB DEV. & ACCESSIBILITY',
+    technologies: 'JavaScript · CSS · HTML',
+    label: 'Live URL',
+    link: 'https://evil-studio.netlify.app/',
+    gallery: [
+      { image: '1', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '2', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '3', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '4', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '5', type: 'screenshot', height: '1080', width: '1920' }
+    ]
+  })
+
+  +template({
+    id: 'croonials',
+    title: 'CROONIALS',
+    company: 'Croonials Studio',
+    role: 'WEB DEV. & DESIGNER',
+    technologies: 'HTML · SCSS · JavaScript',
+    label: 'Live URL',
+    link: 'https://croonials.com/',
+    gallery: [
+      { image: '1', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '2', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '3', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '4', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '5', type: 'screenshot', height: '1080', width: '1920' }
+    ]
+  })
+
+  +template({
+    id: 'folio-2020',
+    title: 'FOLIO-2020',
+    company: 'Freelance',
+    role: 'Interactive & WEB Developer',
+    technologies: 'JavaScript · Webgl · glsl',
+    label: 'Live URL',
+    link: 'https://maggix1404.github.io/awwwards-Rebuild/',
+    gallery: [
+      { image: '1', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '2', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '3', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '4', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '5', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '6', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '7', type: 'screenshot', height: '1080', width: '1920' }
+    ]
+  })
+
+  +template({
+    id: 'clouxgames',
+    title: 'CLOUXGAMES',
+    company: 'GloriaThemes',
+    role: 'WEB Developer',
+    technologies: 'HTML · SASS · JavaScript',
+    label: 'Live URL',
+    link: 'https://themeforest.net/item/rivendell-multipurpose-game-wordpress-theme/21201119',
+    gallery: [
+      { image: '1', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '2', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '3', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '4', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '5', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '6', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '7', type: 'screenshot', height: '1080', width: '1920' }
+    ]
+  })
+
+  +template({
+    id: 'tripwithus',
+    title: 'TRIPWITHUS',
+    company: 'Freelance',
+    role: 'WEB Developer',
+    technologies: 'HTML · SASS · JavaScript',
+    label: 'Live URL',
+    link: 'https://maggix1404.github.io/Tripwithus.com/',
+    gallery: [
+      { image: '1', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '2', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '3', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '4', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '5', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '6', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '7', type: 'screenshot', height: '1080', width: '1920' }
+    ]
+  })
+
+  +template({
+    id: 'ecoland',
+    title: 'ECOLAND',
+    company: 'Freelance',
+    role: 'WEB Developer',
+    technologies: 'HTML · SASS · JavaScript',
+    label: 'Live URL',
+    link: 'https://maggix1404.github.io/ecoland-clone/',
+    gallery: [
+      { image: '1', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '2', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '3', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '4', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '5', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '6', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '7', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '8', type: 'screenshot', height: '1080', width: '1920' }
+    ]
+  })
+
+  +template({
+    id: 'vultures',
+    title: 'STOP VULTURES',
+    company: 'Tectonica Argentina',
+    role: 'WEB Developer',
+    technologies: 'PUG · SASS · JavaScript',
+    label: 'Live URL',
+    link: 'https://www.stopthevultures.org/',
+    gallery: [
+      { image: '1', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '2', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '3', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '4', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '5', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '6', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '7', type: 'screenshot', height: '1080', width: '1920' }
+    ],
+  })
+
+  +template({
+    id: 'bruno',
+    title: 'BRUNO DAVID',
+    company: 'Freelance',
+    role: 'WEB DEV. & ACCESSIBILITY',
+    technologies: 'WebGL · GLSL · JavaScript',
+    label: 'Live URL',
+    link: 'https://maggix1404.github.io/ecoland-clone/',
+    gallery: [
+      { image: '1', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '2', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '3', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '4', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '5', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '6', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '7', type: 'screenshot', height: '1080', width: '1920' }
+    ],
+  })
+
+  +template({
+    id: 'purity',
+    title: 'PURITY',
+    company: 'Freelance',
+    role: 'Interactive & WEB Developer',
+    technologies: 'WebGL · GLSL · JavaScript · ogl',
+    label: 'Live URL',
+    link: 'https://maggix1404.github.io/webgl-portfolio/',
+    gallery: [
+      { image: '1', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '2', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '3', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '4', type: 'screenshot', height: '1080', width: '1920' }
+    ],
+  })
+
+  +template({
+    id: 'school',
+    title: 'ENGLISH SCHOOL',
+    company: 'English-School',
+    role: 'Interactive Developer',
+    technologies: 'VUE JS · NUXT JS · SASS',
+    label: 'Live URL',
+    link: 'https://englishouse.com.ua/',
+    gallery: [
+      { image: '1', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '2', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '3', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '4', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '5', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '6', type: 'screenshot', height: '1080', width: '1920' },
+      { image: '7', type: 'screenshot', height: '1080', width: '1920' }
+    ],
+  })
