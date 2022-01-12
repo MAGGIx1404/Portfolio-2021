@@ -4,6 +4,11 @@ import "utils/sw";
 
 import AutoBind from "auto-bind";
 import Stats from "stats.js";
+import "splitting/dist/splitting.css";
+import "splitting/dist/splitting-cells.css";
+import Splitting from "splitting";
+
+import { gsap, Expo } from "gsap";
 
 import each from "lodash/each";
 
@@ -331,3 +336,31 @@ https://github.com/MAGGIx1404
 }
 
 new App();
+window.addEventListener("load", function () {
+  const target = document.querySelectorAll(".home__link__wrapper");
+  const result = Splitting({
+    target: target,
+  });
+  revealAnimation();
+});
+
+function revealAnimation() {
+  const tl = gsap.timeline();
+  const lines = document.querySelectorAll(".word");
+
+  lines.forEach((ele) => {
+    ele = ele.querySelectorAll(".char");
+    console.log(ele);
+    gsap.set(ele, {
+      ease: Expo.easeInOut,
+    });
+    gsap.to(ele, 0.6, {
+      stagger: {
+        each: 0.1,
+        from: "start",
+      },
+      y: "0",
+      rotation: "0",
+    });
+  });
+}

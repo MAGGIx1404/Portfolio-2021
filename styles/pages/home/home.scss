@@ -81,20 +81,15 @@
   white-space: nowrap;
   color: transparent;
   -webkit-text-stroke: 3px $color-iron;
-  transition: color 0.5s ease, text-shadow 0.5s ease;
+  transition: color 0.5s ease, text-shadow 0.5s ease, transform 0.5s ease;
+  overflow: hidden;
 
   @include media("<=phone") {
     -webkit-text-stroke: 2px rgba($color: $color-iron, $alpha: 1) !important;
-
-    &:hover {
-      text-shadow: 2px 3px 0px rgba($color: $color-iron, $alpha: 0.5),
-        3px 4px 0px rgba($color: $color-iron, $alpha: 0.3);
-    }
   }
 
-  &:hover {
-    text-shadow: 4px 5px 0px rgba($color: $color-iron, $alpha: 0.5),
-      5px 6px 0px rgba($color: $color-iron, $alpha: 0.3);
+  &:hover .home__link__wrapper .word .char {
+    color: rgba($color: $color-iron, $alpha: 0.7);
   }
 }
 
@@ -102,6 +97,54 @@
   display: inline-block;
   pointer-events: none;
   position: relative;
+
+  & .word {
+    & .char {
+      transform: translateY(100%) rotate(15deg);
+      transition: color 0.4s ease;
+      transform-origin: center;
+
+      &:nth-of-type(2) {
+        transition-delay: 0.03s;
+      }
+      &:nth-of-type(3) {
+        transition-delay: 0.06s;
+      }
+      &:nth-of-type(4) {
+        transition-delay: 0.09s;
+      }
+      &:nth-of-type(5) {
+        transition-delay: 0.12s;
+      }
+      &:nth-of-type(6) {
+        transition-delay: 0.15s;
+      }
+      &:nth-of-type(7) {
+        transition-delay: 0.18s;
+      }
+      &:nth-of-type(8) {
+        transition-delay: 0.21s;
+      }
+      &:nth-of-type(9) {
+        transition-delay: 0.24s;
+      }
+      &:nth-of-type(10) {
+        transition-delay: 0.27s;
+      }
+      &:nth-of-type(11) {
+        transition-delay: 0.3s;
+      }
+      &:nth-of-type(12) {
+        transition-delay: 0.33s;
+      }
+      &:nth-of-type(13) {
+        transition-delay: 0.36s;
+      }
+      &:nth-of-type(14) {
+        transition-delay: 0.39s;
+      }
+    }
+  }
 
   @include media("<=phone") {
     transform: none !important;
@@ -111,8 +154,8 @@
 
 .home__link__media {
   background: $color-iron;
-  bottom: 2.2rem;
-  height: 17rem;
+  bottom: 0rem;
+  height: 20rem;
   margin: 0 1rem;
   object-fit: cover;
   opacity: 0;
