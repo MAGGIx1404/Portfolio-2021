@@ -58,20 +58,25 @@
 }
 
 .home__list {
-  & .home__item {
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .home__item {
   // font: 15rem/0.9;
-  font-size: 10vw;
+  font-size: 6vw;
+  line-height: 1;
   font-weight: bold;
-  font-family: "Poppins", sans-serif;
-  padding: 1vh 0 1vh 2vw;
+  // font-family: "Poppins", sans-serif;
+  font-family: "ff";
+  width: 55vw;
 
   @include media("<=phone") {
-    font-size: 12vw;
-    padding: 2vh 0 2vh 2vw;
+    font-size: 18vw;
+    padding: 0 2vw;
+    line-height: 1.2;
+    width: 100%;
   }
 }
 
@@ -79,16 +84,11 @@
   display: block;
   text-align: left;
   white-space: nowrap;
-  color: transparent;
-  -webkit-text-stroke: 3px $color-iron;
   transition: color 0.5s ease, text-shadow 0.5s ease, transform 0.5s ease;
   overflow: hidden;
 
-  @include media("<=phone") {
-    -webkit-text-stroke: 2px rgba($color: $color-iron, $alpha: 1) !important;
-  }
-
   &:hover .home__link__wrapper .word .char {
+    transform: rotate(15deg);
     color: rgba($color: $color-iron, $alpha: 0.7);
   }
 }
@@ -100,8 +100,7 @@
 
   & .word {
     & .char {
-      transform: translateY(100%) rotate(15deg);
-      transition: color 0.4s ease;
+      transition: all 0.4s ease;
       transform-origin: center;
 
       &:nth-of-type(2) {
@@ -155,14 +154,14 @@
 .home__link__media {
   background: $color-iron;
   bottom: 0rem;
-  height: 20rem;
+  height: 12rem;
   margin: 0 1rem;
   object-fit: cover;
   opacity: 0;
   overflow: hidden;
   position: absolute;
   transition: width 0.4s 0.4s $ease-out-expo;
-  width: 20rem;
+  width: 18rem;
 
   &[data-direction="left"] {
     right: 100%;

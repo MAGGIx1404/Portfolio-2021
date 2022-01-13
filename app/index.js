@@ -341,26 +341,4 @@ window.addEventListener("load", function () {
   const result = Splitting({
     target: target,
   });
-  revealAnimation();
 });
-
-function revealAnimation() {
-  const tl = gsap.timeline();
-  const lines = document.querySelectorAll(".word");
-
-  lines.forEach((ele) => {
-    ele = ele.querySelectorAll(".char");
-    console.log(ele);
-    gsap.set(ele, {
-      ease: Expo.easeInOut,
-    });
-    gsap.to(ele, 0.6, {
-      stagger: {
-        each: 0.1,
-        from: "start",
-      },
-      y: "0",
-      rotation: "0",
-    });
-  });
-}
