@@ -20,6 +20,7 @@ import Home from "pages/Home";
 
 import Canvas from "components/Canvas";
 import Navigation from "components/Navigation";
+import loader from "sass-loader";
 
 class App {
   constructor() {
@@ -342,3 +343,56 @@ window.addEventListener("load", function () {
     target: target,
   });
 });
+
+// loader
+
+(function () {
+  function id(v) {
+    return document.getElementById(v);
+  }
+  function loadbar() {
+    var ovrl = document.getElementById("loader"),
+      loader_text = document.getElementById("loader-text"),
+      loader_img = document.querySelector(".loader__img"),
+      img = document.images,
+      c = 0;
+    var tot = img.length;
+
+    function imgLoaded() {
+      c += 1;
+      var perc = (((100 / tot) * c) << 0) + "%";
+
+      perc === 0 && gsap.set(loader_text, { color: "red" });
+      perc === 25 && gsap.set(loader_text, { color: "yellow" });
+      perc === 50 && gsap.set(loader_text, { color: "brown" });
+      perc === 75 && gsap.set(loader_text, { color: "red" });
+      perc === 100 && gsap.set(loader_text, { color: "yellow" });
+
+      loader_text.innerHTML = perc;
+      if (c === tot) return doneLoading();
+    }
+    function doneLoading() {
+      setTimeout(function () {
+        // ovrl.style.opacity = 0;
+        // ovrl.style.display = "none";
+        var tl = gsap.timeline();
+        tl.to(loader_text, 0.5, {
+          opacity: 0,
+        });
+        tl.to(loader_img, 0.7, {
+          opacity: 0,
+        });
+        tl.to(ovrl, 1, {
+          opacity: 0,
+        });
+      }, 500);
+    }
+    for (var i = 0; i < tot; i++) {
+      var tImg = new Image();
+      tImg.onload = imgLoaded;
+      tImg.onerror = imgLoaded;
+      tImg.src = img[i].src;
+    }
+  }
+  document.addEventListener("DOMContentLoaded", loadbar, false);
+})();
