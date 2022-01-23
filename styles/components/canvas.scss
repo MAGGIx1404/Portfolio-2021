@@ -1,10 +1,22 @@
 canvas {
-  display: block;
+  // display: block;
   height: 100vh;
   left: 0;
   pointer-events: none;
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: z('canvas');
+  z-index: z("canvas");
+  transition: opacity 0.5s ease;
+}
+
+canvas:nth-of-type(2) {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  pointer-events: none;
+  z-index: -1;
+  background-color: $color-pine-tree !important;
 }

@@ -13,7 +13,7 @@
   pointer-events: none;
   text-align: center;
 
-  @include media('<=phone') {
+  @include media("<=phone") {
     padding: 10rem 0 5rem;
   }
 }
@@ -23,7 +23,7 @@
   text-align: left;
   width: 176.7rem;
 
-  @include media('<=phone') {
+  @include media("<=phone") {
     width: 95%;
   }
 }
