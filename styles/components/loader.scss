@@ -23,10 +23,24 @@
     }
 
     & h1 {
-      font-size: 2vw;
+      font-size: 3vw;
       font-weight: 500;
       line-height: 1;
+      font-family: "ff";
       transition: opacity 0.5s ease;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 0.5rem;
+      overflow: hidden;
+      width: 4vw;
+      height: 3vw;
+
+      & span.text,
+      & span.text-2 {
+        display: flex;
+        flex-direction: column;
+      }
     }
   }
 }

@@ -352,65 +352,8 @@ https://github.com/MAGGIx1404
 }
 
 new App();
-window.addEventListener("load", function () {
-  const target = document.querySelectorAll(".home__link__wrapper");
-  const result = Splitting({
-    target: target,
-  });
-});
 
-// loader
-
-(function () {
-  function id(v) {
-    return document.getElementById(v);
-  }
-  function loadbar() {
-    var ovrl = document.getElementById("loader"),
-      loader_text = document.getElementById("loader-text"),
-      loader_img = document.querySelector(".loader__img"),
-      img = document.images,
-      c = 0;
-    var tot = img.length;
-
-    function imgLoaded() {
-      c += 1;
-      var perc = (((100 / tot) * c) << 0) + "%";
-
-      perc === 0 && gsap.set(loader_text, { color: "red" });
-      perc === 25 && gsap.set(loader_text, { color: "yellow" });
-      perc === 50 && gsap.set(loader_text, { color: "brown" });
-      perc === 75 && gsap.set(loader_text, { color: "red" });
-      perc === 100 && gsap.set(loader_text, { color: "yellow" });
-
-      loader_text.innerHTML = perc;
-      if (c === tot) return doneLoading();
-    }
-    function doneLoading() {
-      setTimeout(function () {
-        // ovrl.style.opacity = 0;
-        // ovrl.style.display = "none";
-        var tl = gsap.timeline();
-        tl.to(loader_text, 0.5, {
-          opacity: 0,
-        });
-        tl.to(loader_img, 0.7, {
-          opacity: 0,
-        });
-        tl.to(ovrl, 1, {
-          opacity: 0,
-        });
-      }, 500);
-    }
-    for (var i = 0; i < tot; i++) {
-      var tImg = new Image();
-      tImg.onload = imgLoaded;
-      tImg.onerror = imgLoaded;
-      tImg.src = img[i].src;
-    }
-  }
-  document.addEventListener("DOMContentLoaded", loadbar, false);
-})();
+// ogl cursor
 
 const vertex = `
       attribute vec3 position;
@@ -598,4 +541,46 @@ if (window.innerWidth < 1000) {
   items.classList.add("show");
 }
 
-// custom cursor
+const imagesLoaded = require("imagesloaded");
+const target = document.querySelectorAll(".home__link__wrapper");
+
+window.addEventListener("load", function () {
+  imagesLoaded(document.querySelectorAll(".img"), { background: true }, () => {
+    document.body.classList.remove("loading");
+    document.body.classList.add("loaded");
+    const result = Splitting({
+      target: target,
+    });
+  });
+});
+
+window.addEventListener("DOMContentLoaded", function () {
+  load_animation();
+  console.log("page load sucessfully");
+});
+
+function load_animation() {
+  const loader_text = document.querySelector(".loader-text");
+  const loader = document.querySelector(".loader");
+  const loader_img = document.querySelector(".loader__img");
+  const loader_text_one = document.querySelector(".loader-text .text");
+  const loader_text_two = document.querySelector(".loader-text .text-2");
+
+  let tl = gsap.timeline({ defaults: { duration: 1, ease: "back" } });
+
+  tl.to(loader_text_one, { y: "-3vw" });
+  tl.to(loader_text_one, { y: "-9vw" });
+  tl.to(loader_text_one, { y: "-18vw" });
+  tl.to(loader_text_one, { y: "-24vw" });
+  tl.to(loader_text_one, { y: "-27vw" });
+  tl.to(loader_text_two, { y: "-3vw" }, "-=1");
+  tl.to(loader_text_two, { y: "-9vw" });
+  tl.to(loader_text_two, { y: "-12vw" });
+  tl.to(loader_text_two, { y: "-18vw" });
+  tl.to(loader_text_two, { y: "-21vw" });
+  tl.to(loader_text_two, { y: "-24vw" });
+  tl.to(loader_text_two, { y: "-27vw" });
+  tl.to(loader_text, { y: "-50%", opacity: 0 });
+  tl.to(loader_img, { y: "-50%", opacity: 0 }, "-=1");
+  tl.to(loader, { opacity: "0" });
+}
