@@ -91,11 +91,11 @@
   bottom: 5rem;
   cursor: pointer;
   font-size: 0;
-  height: 2rem;
+  height: 5rem;
   position: absolute;
-  right: 5rem;
+  left: 5rem;
   transition: transform 0.4s $ease-out-expo;
-  width: 2rem;
+  width: 5rem;
   display: none;
 
   &:hover {

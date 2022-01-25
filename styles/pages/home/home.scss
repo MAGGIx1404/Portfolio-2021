@@ -87,8 +87,15 @@
   transition: color 0.5s ease, text-shadow 0.5s ease, transform 0.5s ease;
   overflow: hidden;
 
+  & .home__link__wrapper .word .char {
+    transform: translateY(100%);
+  }
+
+  &.show .home__link__wrapper .word .char {
+    transform: translateY(0);
+  }
+
   &:hover .home__link__wrapper .word .char {
-    transform: rotate(15deg);
     color: rgba($color: $color-iron, $alpha: 0.7);
   }
 }
@@ -103,45 +110,60 @@
       transition: all 0.4s ease;
       transform-origin: center;
 
-      &:nth-of-type(2) {
-        transition-delay: 0.03s;
-      }
-      &:nth-of-type(3) {
-        transition-delay: 0.06s;
-      }
-      &:nth-of-type(4) {
-        transition-delay: 0.09s;
-      }
-      &:nth-of-type(5) {
-        transition-delay: 0.12s;
-      }
-      &:nth-of-type(6) {
-        transition-delay: 0.15s;
-      }
-      &:nth-of-type(7) {
-        transition-delay: 0.18s;
-      }
-      &:nth-of-type(8) {
-        transition-delay: 0.21s;
-      }
-      &:nth-of-type(9) {
-        transition-delay: 0.24s;
-      }
-      &:nth-of-type(10) {
-        transition-delay: 0.27s;
-      }
-      &:nth-of-type(11) {
-        transition-delay: 0.3s;
-      }
-      &:nth-of-type(12) {
-        transition-delay: 0.33s;
-      }
-      &:nth-of-type(13) {
-        transition-delay: 0.36s;
-      }
-      &:nth-of-type(14) {
-        transition-delay: 0.39s;
-      }
+      // &:nth-of-type(2) {
+      //   transition-delay: 0.03s;
+      // }
+      // &:nth-of-type(3) {
+      //   transition-delay: 0.06s;
+      // }
+      // &:nth-of-type(4) {
+      //   transition-delay: 0.09s;
+      // }
+      // &:nth-of-type(5) {
+      //   transition-delay: 0.12s;
+      // }
+      // &:nth-of-type(6) {
+      //   transition-delay: 0.15s;
+      // }
+      // &:nth-of-type(7) {
+      //   transition-delay: 0.18s;
+      // }
+      // &:nth-of-type(8) {
+      //   transition-delay: 0.21s;
+      // }
+      // &:nth-of-type(9) {
+      //   transition-delay: 0.24s;
+      // }
+      // &:nth-of-type(10) {
+      //   transition-delay: 0.27s;
+      // }
+      // &:nth-of-type(11) {
+      //   transition-delay: 0.3s;
+      // }
+      // &:nth-of-type(12) {
+      //   transition-delay: 0.33s;
+      // }
+      // &:nth-of-type(13) {
+      //   transition-delay: 0.36s;
+      // }
+      // &:nth-of-type(14) {
+      //   transition-delay: 0.39s;
+      // }
+      // &:nth-of-type(15) {
+      //   transition-delay: 0.42s;
+      // }
+      // &:nth-of-type(16) {
+      //   transition-delay: 0.45s;
+      // }
+      // &:nth-of-type(17) {
+      //   transition-delay: 0.48s;
+      // }
+      // &:nth-of-type(18) {
+      //   transition-delay: 0.51s;
+      // }
+      // &:nth-of-type(19) {
+      //   transition-delay: 0.54s;
+      // }
     }
   }
 

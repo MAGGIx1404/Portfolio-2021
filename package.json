@@ -60,6 +60,7 @@
     "webpack-merge": "^4.2.1"
   },
   "dependencies": {
+    "imagesloaded": "^4.1.4",
     "splitting": "^1.0.6"
   }
 }

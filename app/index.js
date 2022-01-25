@@ -9,6 +9,7 @@ import "splitting/dist/splitting-cells.css";
 import Splitting from "splitting";
 
 import { gsap, Expo } from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 import each from "lodash/each";
 
@@ -33,6 +34,8 @@ import {
   Vec2,
   Color,
 } from "ogl/dist/ogl.umd";
+
+gsap.registerPlugin(ScrollTrigger);
 
 class App {
   constructor() {
@@ -453,6 +456,8 @@ const vertex = `
   });
   const gl = renderer.gl;
   document.body.appendChild(gl.canvas);
+  const value = random(0, 360, 0.01);
+  const background = `hsl(${value}deg 19% 9%)`;
   gl.clearColor(244 / 255, 216 / 255, 204 / 255, 0 / 0);
 
   const scene = new Transform();
@@ -573,3 +578,24 @@ const vertex = `
     renderer.render({ scene });
   }
 }
+
+// text animation
+const items = document.querySelectorAll(".home__link");
+
+if (window.innerWidth > 1000) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      entry.target.classList.toggle("show", entry.isIntersecting);
+    });
+  });
+
+  items.forEach((item) => {
+    observer.observe(item);
+  });
+}
+
+if (window.innerWidth < 1000) {
+  items.classList.add("show");
+}
+
+// custom cursor
