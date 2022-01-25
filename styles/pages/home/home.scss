@@ -73,7 +73,7 @@
   width: 55vw;
 
   @include media("<=phone") {
-    font-size: 18vw;
+    font-size: 14vw;
     padding: 0 2vw;
     line-height: 1.2;
     width: 100%;
@@ -89,6 +89,10 @@
 
   & .home__link__wrapper .word .char {
     transform: translateY(100%);
+
+    @media only screen and (max-width: 1000px) {
+      transform: translateY(0);
+    }
   }
 
   &.show .home__link__wrapper .word .char {

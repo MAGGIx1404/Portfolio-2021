@@ -320,34 +320,6 @@ class App {
         link.target = "_blank";
       }
     });
-
-    console.log(`
-🅳🅴🆂🅸🅶🅽 🅰🅽🅳 🅲🆁🅰🅵🆃🅴🅳 🅱🆈:
-MMMMMMMM               MMMMMMMM                                                           iiii
-M:::::::M             M:::::::M                                                          i::::i
-M::::::::M           M::::::::M                                                           iiii
-M:::::::::M         M:::::::::M
-M::::::::::M       M::::::::::M  aaaaaaaaaaaaa     ggggggggg   ggggg   ggggggggg   gggggiiiiiii
-M:::::::::::M     M:::::::::::M  a::::::::::::a   g:::::::::ggg::::g  g:::::::::ggg::::gi:::::i
-M:::::::M::::M   M::::M:::::::M  aaaaaaaaa:::::a g:::::::::::::::::g g:::::::::::::::::g i::::i
-M::::::M M::::M M::::M M::::::M           a::::ag::::::ggggg::::::ggg::::::ggggg::::::gg i::::i
-M::::::M  M::::M::::M  M::::::M    aaaaaaa:::::ag:::::g     g:::::g g:::::g     g:::::g  i::::i
-M::::::M   M:::::::M   M::::::M  aa::::::::::::ag:::::g     g:::::g g:::::g     g:::::g  i::::i
-M::::::M    M:::::M    M::::::M a::::aaaa::::::ag:::::g     g:::::g g:::::g     g:::::g  i::::i
-M::::::M     MMMMM     M::::::Ma::::a    a:::::ag::::::g    g:::::g g::::::g    g:::::g  i::::i
-M::::::M               M::::::Ma::::a    a:::::ag:::::::ggggg:::::g g:::::::ggggg:::::g i::::::i
-M::::::M               M::::::Ma:::::aaaa::::::a g::::::::::::::::g  g::::::::::::::::g i::::::i
-M::::::M               M::::::M a::::::::::aa:::a gg::::::::::::::g   gg::::::::::::::g i::::::i
-MMMMMMMM               MMMMMMMM  aaaaaaaaaa  aaaa   gggggggg::::::g     gggggggg::::::g iiiiiiii
-                                                            g:::::g             g:::::g
-                                                gggggg      g:::::g gggggg      g:::::g
-                                                g:::::gg   gg:::::g g:::::gg   gg:::::g
-                                                 g::::::ggg:::::::g  g::::::ggg:::::::g
-                                                  gg:::::::::::::g    gg:::::::::::::g
-                                                    ggg::::::ggg        ggg::::::ggg
-                                                       gggggg              gggggg
-https://github.com/MAGGIx1404
-`);
   }
 }
 
@@ -526,19 +498,18 @@ const vertex = `
 const items = document.querySelectorAll(".home__link");
 
 if (window.innerWidth > 1000) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      entry.target.classList.toggle("show", entry.isIntersecting);
-    });
-  });
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        entry.target.classList.toggle("show", entry.isIntersecting);
+      });
+    },
+    { threshold: 0.5 }
+  );
 
   items.forEach((item) => {
     observer.observe(item);
   });
-}
-
-if (window.innerWidth < 1000) {
-  items.classList.add("show");
 }
 
 const imagesLoaded = require("imagesloaded");
@@ -548,15 +519,12 @@ window.addEventListener("load", function () {
   imagesLoaded(document.querySelectorAll(".img"), { background: true }, () => {
     document.body.classList.remove("loading");
     document.body.classList.add("loaded");
+    load_animation();
+    console.log("page load sucessfully");
     const result = Splitting({
       target: target,
     });
   });
-});
-
-window.addEventListener("DOMContentLoaded", function () {
-  load_animation();
-  console.log("page load sucessfully");
 });
 
 function load_animation() {
@@ -583,4 +551,33 @@ function load_animation() {
   tl.to(loader_text, { y: "-50%", opacity: 0 });
   tl.to(loader_img, { y: "-50%", opacity: 0 }, "-=1");
   tl.to(loader, { opacity: "0" });
+  tl.to(loader, { display: "none" });
 }
+
+console.log(`
+🅳🅴🆂🅸🅶🅽 🅰🅽🅳 🅲🆁🅰🅵🆃🅴🅳 🅱🆈:
+MMMMMMMM               MMMMMMMM                                                           iiii
+M:::::::M             M:::::::M                                                          i::::i
+M::::::::M           M::::::::M                                                           iiii
+M:::::::::M         M:::::::::M
+M::::::::::M       M::::::::::M  aaaaaaaaaaaaa     ggggggggg   ggggg   ggggggggg   gggggiiiiiii
+M:::::::::::M     M:::::::::::M  a::::::::::::a   g:::::::::ggg::::g  g:::::::::ggg::::gi:::::i
+M:::::::M::::M   M::::M:::::::M  aaaaaaaaa:::::a g:::::::::::::::::g g:::::::::::::::::g i::::i
+M::::::M M::::M M::::M M::::::M           a::::ag::::::ggggg::::::ggg::::::ggggg::::::gg i::::i
+M::::::M  M::::M::::M  M::::::M    aaaaaaa:::::ag:::::g     g:::::g g:::::g     g:::::g  i::::i
+M::::::M   M:::::::M   M::::::M  aa::::::::::::ag:::::g     g:::::g g:::::g     g:::::g  i::::i
+M::::::M    M:::::M    M::::::M a::::aaaa::::::ag:::::g     g:::::g g:::::g     g:::::g  i::::i
+M::::::M     MMMMM     M::::::Ma::::a    a:::::ag::::::g    g:::::g g::::::g    g:::::g  i::::i
+M::::::M               M::::::Ma::::a    a:::::ag:::::::ggggg:::::g g:::::::ggggg:::::g i::::::i
+M::::::M               M::::::Ma:::::aaaa::::::a g::::::::::::::::g  g::::::::::::::::g i::::::i
+M::::::M               M::::::M a::::::::::aa:::a gg::::::::::::::g   gg::::::::::::::g i::::::i
+MMMMMMMM               MMMMMMMM  aaaaaaaaaa  aaaa   gggggggg::::::g     gggggggg::::::g iiiiiiii
+                                                            g:::::g             g:::::g
+                                                gggggg      g:::::g gggggg      g:::::g
+                                                g:::::gg   gg:::::g g:::::gg   gg:::::g
+                                                 g::::::ggg:::::::g  g::::::ggg:::::::g
+                                                  gg:::::::::::::g    gg:::::::::::::g
+                                                    ggg::::::ggg        ggg::::::ggg
+                                                       gggggg              gggggg
+https://github.com/MAGGIx1404
+`);

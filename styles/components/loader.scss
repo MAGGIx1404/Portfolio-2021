@@ -7,7 +7,7 @@
   left: 0;
   background-color: $color-pine-tree;
   transition: opacity 0.5s ease;
-  pointer-events: none;
+  // pointer-events: none;
 
   & .inner-loader {
     width: 100vw;
@@ -17,9 +17,17 @@
     align-items: center;
     justify-content: flex-start;
 
+    @media only screen and (max-width: 800px) {
+      justify-content: center;
+    }
+
     & img {
       width: 60vw;
       height: auto;
+
+      @media only screen and (max-width: 800px) {
+        width: 100vw;
+      }
     }
 
     & h1 {
@@ -35,6 +43,11 @@
       overflow: hidden;
       width: 4vw;
       height: 3vw;
+
+      @media only screen and (max-width: 800px) {
+        width: 8vw;
+        gap: 0.2rem;
+      }
 
       & span.text,
       & span.text-2 {

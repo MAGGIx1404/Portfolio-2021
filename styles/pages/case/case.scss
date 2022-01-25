@@ -20,7 +20,7 @@
     visibility: visible;
   }
 
-  @include media('<=phone') {
+  @include media("<=phone") {
     padding: 5rem 0;
   }
 }
