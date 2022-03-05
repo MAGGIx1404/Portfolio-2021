@@ -1,4 +1,4 @@
-const staticCacheName = 'bizarro-v1'
+const staticCacheName = 'jeet-v1'
 
 const filesToCache = [
   '/offline/index.html'

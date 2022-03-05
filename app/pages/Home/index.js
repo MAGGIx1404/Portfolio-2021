@@ -1,5 +1,6 @@
 import Page from "components/Page";
 import Scrolling from "components/Scrolling";
+import gsap from "gsap";
 
 import { delay } from "utils/math";
 
@@ -8,11 +9,13 @@ export default class extends Page {
     super({
       classes: {
         active: "home--active",
+        activeTwo: "active"
       },
       element: ".home",
       elements: {
         list: ".home__list",
         items: ".home__item",
+        links: "[data-word]"
       },
       isScrollable: false,
     });
@@ -27,6 +30,10 @@ export default class extends Page {
     this.list.enable();
 
     this.element.classList.add(this.classes.active);
+    this.elements.links.forEach(ele => {
+      ele.classList.add(this.classes.activeTwo)
+    });
+    // const tl = gsap.timeline();
 
     return super.show();
   }
@@ -34,9 +41,13 @@ export default class extends Page {
   async hide() {
     this.list.disable();
 
+    this.elements.links.forEach(ele => {
+      ele.classList.remove(this.classes.activeTwo);
+    });
     this.element.classList.remove(this.classes.active);
 
-    await delay(1000);
+    await delay(2000);
+
 
     return super.hide();
   }

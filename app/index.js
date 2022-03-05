@@ -56,6 +56,7 @@ class App {
       this.createCanvas();
     }
 
+    this.text();
     this.createNavigation();
     this.createCase();
     this.createHome();
@@ -298,6 +299,13 @@ class App {
     window.oncontextmenu = this.onContextMenu;
   }
 
+  text(){
+      const target = document.querySelectorAll(".home__link__wrapper");
+      const result = Splitting({
+        target: target,
+      });
+  }
+
   addLinksEventsListeners() {
     const links = document.querySelectorAll("a");
 
@@ -325,234 +333,7 @@ class App {
 
 new App();
 
-// ogl cursor
 
-const vertex = `
-      attribute vec3 position;
-      attribute vec3 next;
-      attribute vec3 prev;
-      attribute vec2 uv;
-      attribute float side;
-
-      uniform vec2 uResolution;
-      uniform float uDPR;
-      uniform float uThickness;
-
-      vec4 getPosition() {
-          vec2 aspect = vec2(uResolution.x / uResolution.y, 1);
-          vec2 nextScreen = next.xy * aspect;
-          vec2 prevScreen = prev.xy * aspect;
-
-          vec2 tangent = normalize(nextScreen - prevScreen);
-          vec2 normal = vec2(-tangent.y, tangent.x);
-          normal /= aspect;
-          normal *= 1.0 - pow(abs(uv.y - 0.5) * 1.9, 2.0);
-
-          float pixelWidth = 1.0 / (uResolution.y / uDPR);
-          normal *= pixelWidth * uThickness;
-
-          // When the points are on top of each other, shrink the line to avoid artifacts.
-          float dist = length(nextScreen - prevScreen);
-          normal *= smoothstep(0.0, 0.02, dist);
-
-          vec4 current = vec4(position, 1);
-          current.xy -= normal * side;
-          return current;
-      }
-
-      void main() {
-          gl_Position = getPosition();
-      }
-  `;
-
-{
-  const renderer = new Renderer({
-    dpr: 2,
-  });
-  const gl = renderer.gl;
-  document.body.appendChild(gl.canvas);
-  const value = random(0, 360, 0.01);
-  const background = `hsl(${value}deg 19% 9%)`;
-  gl.clearColor(244 / 255, 216 / 255, 204 / 255, 0 / 0);
-
-  const scene = new Transform();
-
-  const lines = [];
-
-  function resize() {
-    renderer.setSize(window.innerWidth, window.innerHeight);
-
-    // We call resize on the polylines to update their resolution uniforms
-    lines.forEach((line) => line.polyline.resize());
-  }
-  window.addEventListener("resize", resize, false);
-
-  // If you're interested in learning about drawing lines with geometry,
-  // go through this detailed article by Matt DesLauriers
-  // https://mattdesl.svbtle.com/drawing-lines-is-hard
-  // It's an excellent breakdown of the approaches and their pitfalls.
-
-  // In this example, we're making screen-space polylines. Basically it
-  // involves creating a geometry of vertices along a path - with two vertices
-  // at each point. Then in the vertex shader, we push each pair apart to
-  // give the line some width.
-
-  // Just a helper function to make the code neater
-  function random(a, b) {
-    const alpha = Math.random();
-    return a * (1.0 - alpha) + b * alpha;
-  }
-
-  // We're going to make a number of different coloured lines for fun.
-  ["#e09f7d", "#ef5d60", "#ec4067", "#a01a7d", "#311847"].forEach(
-    (color, i) => {
-      // Store a few values for each lines' randomised spring movement
-      const line = {
-        spring: random(0.02, 0.1),
-        friction: random(0.7, 0.95),
-        mouseVelocity: new Vec3(),
-        mouseOffset: new Vec3(random(-1, 1) * 0.02),
-      };
-
-      // Create an array of Vec3s (eg [[0, 0, 0], ...])
-      const count = 20;
-      const points = (line.points = []);
-      for (let i = 0; i < count; i++) points.push(new Vec3());
-
-      line.polyline = new Polyline(gl, {
-        points,
-        vertex,
-        uniforms: {
-          uColor: { value: new Color(color) },
-          uThickness: { value: random(20, 50) },
-        },
-      });
-
-      line.polyline.mesh.setParent(scene);
-
-      lines.push(line);
-    }
-  );
-
-  // Call initial resize after creating the polylines
-  resize();
-
-  // Add handlers to get mouse position
-  const mouse = new Vec3();
-  if ("ontouchstart" in window) {
-    window.addEventListener("touchstart", updateMouse, false);
-    window.addEventListener("touchmove", updateMouse, false);
-  } else {
-    window.addEventListener("mousemove", updateMouse, false);
-  }
-
-  function updateMouse(e) {
-    if (e.changedTouches && e.changedTouches.length) {
-      e.x = e.changedTouches[0].pageX;
-      e.y = e.changedTouches[0].pageY;
-    }
-    if (e.x === undefined) {
-      e.x = e.pageX;
-      e.y = e.pageY;
-    }
-
-    // Get mouse value in -1 to 1 range, with y flipped
-    mouse.set(
-      (e.x / gl.renderer.width) * 2 - 1,
-      (e.y / gl.renderer.height) * -2 + 1,
-      0
-    );
-  }
-
-  const tmp = new Vec3();
-
-  requestAnimationFrame(update);
-  function update(t) {
-    requestAnimationFrame(update);
-
-    lines.forEach((line) => {
-      // Update polyline input points
-      for (let i = line.points.length - 1; i >= 0; i--) {
-        if (!i) {
-          // For the first point, spring ease it to the mouse position
-          tmp
-            .copy(mouse)
-            .add(line.mouseOffset)
-            .sub(line.points[i])
-            .multiply(line.spring);
-          line.mouseVelocity.add(tmp).multiply(line.friction);
-          line.points[i].add(line.mouseVelocity);
-        } else {
-          // The rest of the points ease to the point in front of them, making a line
-          line.points[i].lerp(line.points[i - 1], 0.9);
-        }
-      }
-      line.polyline.updateGeometry();
-    });
-
-    renderer.render({ scene });
-  }
-}
-
-// text animation
-const items = document.querySelectorAll(".home__link");
-
-if (window.innerWidth > 1000) {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        entry.target.classList.toggle("show", entry.isIntersecting);
-      });
-    },
-    { threshold: 0.5 }
-  );
-
-  items.forEach((item) => {
-    observer.observe(item);
-  });
-}
-
-const imagesLoaded = require("imagesloaded");
-const target = document.querySelectorAll(".home__link__wrapper");
-
-window.addEventListener("load", function () {
-  imagesLoaded(document.querySelectorAll(".img"), { background: true }, () => {
-    document.body.classList.remove("loading");
-    document.body.classList.add("loaded");
-    load_animation();
-    console.log("page load sucessfully");
-    const result = Splitting({
-      target: target,
-    });
-  });
-});
-
-function load_animation() {
-  const loader_text = document.querySelector(".loader-text");
-  const loader = document.querySelector(".loader");
-  const loader_img = document.querySelector(".loader__img");
-  const loader_text_one = document.querySelector(".loader-text .text");
-  const loader_text_two = document.querySelector(".loader-text .text-2");
-
-  let tl = gsap.timeline({ defaults: { duration: 1, ease: "back" } });
-
-  tl.to(loader_text_one, { y: "-3vw" });
-  tl.to(loader_text_one, { y: "-9vw" });
-  tl.to(loader_text_one, { y: "-18vw" });
-  tl.to(loader_text_one, { y: "-24vw" });
-  tl.to(loader_text_one, { y: "-27vw" });
-  tl.to(loader_text_two, { y: "-3vw" }, "-=1");
-  tl.to(loader_text_two, { y: "-9vw" });
-  tl.to(loader_text_two, { y: "-12vw" });
-  tl.to(loader_text_two, { y: "-18vw" });
-  tl.to(loader_text_two, { y: "-21vw" });
-  tl.to(loader_text_two, { y: "-24vw" });
-  tl.to(loader_text_two, { y: "-27vw" });
-  tl.to(loader_text, { y: "-50%", opacity: 0 });
-  tl.to(loader_img, { y: "-50%", opacity: 0 }, "-=1");
-  tl.to(loader, { opacity: "0" });
-  tl.to(loader, { display: "none" });
-}
 
 console.log(`
 🅳🅴🆂🅸🅶🅽 🅰🅽🅳 🅲🆁🅰🅵🆃🅴🅳 🅱🆈:

@@ -11,9 +11,9 @@ import Media from "./Media";
 export default class {
   constructor({ url }) {
     this.background = {
-      r: 244,
-      g: 216,
-      b: 204,
+      r: 0,
+      g: 0,
+      b: 0,
       a: 0,
     };
 
@@ -32,6 +32,8 @@ export default class {
     });
 
     document.body.appendChild(this.gl.canvas);
+    this.gl.canvas.classList.add("flag-container");
+
 
     this.createCamera();
     this.createScene();
@@ -117,10 +119,10 @@ export default class {
   onChange(url) {
     if (url.indexOf("/about") > -1) {
       each(this.medias, (media) => media.onAboutOpen());
-      document.querySelector("canvas:nth-of-type(1)").style.opacity = "0";
+      document.querySelector("canvas.flag-container").style.opacity = "0";
     } else {
       each(this.medias, (media) => media.onAboutClose());
-      document.querySelector("canvas:nth-of-type(1)").style.opacity = "1";
+      document.querySelector("canvas.flag-container").style.opacity = "1";
     }
 
     if (url.indexOf("/case") > -1) {
@@ -193,7 +195,7 @@ export default class {
       this.background.r / 255,
       this.background.g / 255,
       this.background.b / 255,
-      this.background.a / 0
+      this.background.a / 1
     );
 
     if (this.medias) {

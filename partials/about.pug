@@ -34,20 +34,17 @@ section.about
       header.about__header
         h1.about__header__title
           span.about__header__title__text
-            | #[span Hii !]
+            | #[span JEET]
 
           span.about__header__title__text
-            | #[span I am Jeet.]
-          span.about__header__title__text
-            | #[span FRONTEND]
+            | #[span CREATIVE+]
 
           span.about__header__title__text
             | #[span DEVELOPER]
 
-      .about__gallery(data-src="/grid.jpg" data-src-webp="/grid.webp")
-        each _, index in Array(24)
-          .about__gallery__media(class=[0, 1, 2, 3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24].indexOf(index) > -1 ? "about__gallery__media--transparent" : "" data-index=index)
-
+      .about__gallery
+        figure.about__gallery__wrapper
+          img(src="/grid.jpg" data-src-webp="/grid.webp" , alt="profile picture")
 
 
       .about__sections
@@ -65,56 +62,55 @@ section.about
               | I like to Create a Websites and Webapps that are creative and interactive.
 
         .about__section
-          h2.about__section__title My #[br] Skills😎
+                h2.about__section__title MY FEATURE
 
-          .about__section__content
-            p.about__section__number 15+
+                .about__section__content
+                  p.about__section__description(data-animation="paragraph")
+                    | I'VE BEEN WORKING SINCE 2020. DURING THIS TIME,
+                    | I REALIZED THAT I LIKE TO COMBINE FUNCTIONAL SOLUTIONS
+                    | WITH ESTHETICS. THIS IS HOW I CREATE A PRODUCT THAT WILL BE USED WITH LOVE
 
-            ul.about__section__list
-              +award("https://developer.mozilla.org/en-US/docs/Web/HTML", "HTML")
-              +award("https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Displaying_data/Template_primer", "PUG")
-              +award("https://developer.mozilla.org/en-US/docs/Web/css", "CSS")
-              +award("https://sass-lang.com/", "SCSS")
-              +award("https://sass-lang.com/", "SASS")
-              +award("https://developer.mozilla.org/en-US/docs/Web/javascript", "JAVASCRIPT")
-              +award("https://reactjs.org/", "REACT")
-              +award("https://www.gatsbyjs.com/", "GATSBY JS")
-              +award("https://vuejs.org/", "VUE JS")
-              +award("https://nuxtjs.org/", "NUXT JS")
-              +award("https://nextjs.org/", "NEXT JS")
-              +award("https://www.python.org/", "PYTHON")
-              +award("https://www.djangoproject.com/", "DJANGO")
-              +award("https://www.geeksforgeeks.org/c-programming-language/", "C")
-              +award("https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Cross_browser_testing/Introduction", "WEB ACCESSIBILITY & COMPATIBILITY")
+                  p.about__section__description(data-animation="paragraph")
+                    | I TRY TO USE ALL POSSIBLE TOOLS IN MY WORK TO ACHIEVE
+                    | MAXIMUM RESULTS. I LOVE WORKING WITH 3D, PHOTOGRAPHY, VIDEO, TYPOGRAPHY, COLORS AND UNUSUAL GRAPHIC SOLUTIONS.
 
         .about__section
-          h2.about__section__title Tools
+                h2.about__section__title MY SKILLS
 
-          .about__section__content
-            p.about__section__number 14+
+                .about__section__content
+                  .about__section__content__wrapper
+                    .about__section__content__list
+                      h2.about__section__list__title DEVELOPMENT
+                      p.about__section__list__item(data-animation="paragraph") HTML5
+                      p.about__section__list__item(data-animation="paragraph") CSS3
+                      p.about__section__list__item(data-animation="paragraph") SCSS
+                      p.about__section__list__item(data-animation="paragraph") JAVASCRIPT
+                      p.about__section__list__item(data-animation="paragraph") REACT
+                      p.about__section__list__item(data-animation="paragraph") VUE JS
+                      p.about__section__list__item(data-animation="paragraph") NUXT JS
+                      p.about__section__list__item(data-animation="paragraph") NEXT JS
+                      p.about__section__list__item(data-animation="paragraph") PYTHON
+                      p.about__section__list__item(data-animation="paragraph") C
+                    .about__section__content__list
+                      h2.about__section__list__title DESIGN AND TOOLS
+                      p.about__section__list__item(data-animation="paragraph") FIGMA
+                      p.about__section__list__item(data-animation="paragraph") ADOBE XD
+                      p.about__section__list__item(data-animation="paragraph") ADOBE PHOTOSHOP
+                      p.about__section__list__item(data-animation="paragraph") ADOBE ILLUSTRATION
+                      p.about__section__list__item(data-animation="paragraph") INKSCAPE
+                      p.about__section__list__item(data-animation="paragraph") BLENDER
+                      p.about__section__list__item(data-animation="paragraph") NPM
 
-            ul.about__section__list
-              +press("https://www.adobe.com/in/products/aftereffects.html","ADOBE AFTER EFFECTS")
-              +press("https://www.adobe.com/in/products/illustrator.html", "ADOBE ILLUSTRATION")
-              +press("https://www.adobe.com/in/products/photoshop-lightroom.html", "ADOBE LIGHTROOM")
-              +press("https://www.adobe.com/in/products/photoshop.html", "ADOBE PHOTOSHOP")
-              +press("https://www.adobe.com/in/products/xd.html", "ADOBE XD")
-              +press("https://www.blender.org/", "BLENDER")
-              +press("https://www.figma.com/", "FIGMA")
-              +press("https://filmora.wondershare.com/","FILMORA Wondershare")
-              +press("https://git-scm.com/","GIT")
-              +press("https://inkscape.org/","INKSCAPE")
-              +press("https://www.autodesk.com/products/maya/overview?term=1-YEAR&tab=subscription","MAYA")
-              +press("https://www.npmjs.com/","NPM")
-              +press("https://code.visualstudio.com/","VS CODE")
-              +press("https://www.sublimetext.com/","SUBLIME TEXT")
-
-        .about__section
-          h2.about__section__title(data-animation="paragraph" data-animation-threshold="1") Contact
-
-          .about__section__content
-            p.about__section__description(data-animation="paragraph" data-animation-threshold="1")
-              | Email : #[a(href="mailto:someone@example.com" rel="noreferrer noopener") jeetpatel0070070@gmail.com] #[br]
-              | #[a(href="https://www.behance.net/yashramoliya" rel="noreferrer noopener" target="_blank") Behance ] #[br]
-              | #[a(href="https://dribbble.com/jeet0070070" rel="noreferrer noopener" target="_blank") Dribbble] #[br]
-              | #[a(href="https://github.com/MAGGIx1404" rel="noreferrer noopener" target="_blank") Github] #[br]
+        .about__section.footer__section
+            .about__section__content
+              a.about__section__contact__btn(href="/") CONTACT ME
+              ul.social__links
+                li.social__link__wrapper
+                  a.social__link__btn(href="/") GITHUB
+                li.social__link__wrapper
+                  a.social__link__btn(href="/") LINKDIN
+                li.social__link__wrapper
+                  a.social__link__btn(href="/") BEHANCE
+                li.social__link__wrapper
+                  a.social__link__btn(href="/") DRIBBBLE
+            p.info__paragraph Design & Dev. By #[a.info__btn(href="/") MAGGIx1404]

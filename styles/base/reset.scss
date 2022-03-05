@@ -1,7 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Squada+One&display=swap');
+
+
 
 html {
-  background: $color-pine-tree;
+  background: #000000 !important;
   box-sizing: border-box;
   color: $color-iron;
   font-size: calc(100vw / 1920 * 10);
@@ -21,8 +24,10 @@ html {
 }
 
 body {
+  background: #000000 !important;
   // font-family: $font-neue-montreal;
-  font-family: "Poppins", sans-serif;
+  // font-family: "Poppins", sans-serif;
+  font-family: 'Squada One', cursive;
   height: 100%;
   left: 0;
   opacity: 1;

@@ -3,7 +3,8 @@
   @extend %page;
 
   overflow: hidden;
-  transition: opacity 0.4s ease, visibility 0.4s ease;
+  transition-delay: .5s;
+  transition: opacity 1.4s ease, visibility 1.4s ease;
 
   &--active {
     @extend %page--active;
@@ -65,17 +66,20 @@
 
 .home__item {
   // font: 15rem/0.9;
-  font-size: 6vw;
-  line-height: 1;
+  font-size: 12rem;
   font-weight: bold;
+  letter-spacing: 2px;
+  line-height: 1;
   // font-family: "Poppins", sans-serif;
-  font-family: "ff";
+  // font-family: "ff";
   width: 55vw;
+  overflow: hidden;
+  height: fit-content;
+  padding: 0;
 
   @include media("<=phone") {
     font-size: 14vw;
     padding: 0 2vw;
-    line-height: 1.2;
     width: 100%;
   }
 }
@@ -83,24 +87,13 @@
 .home__link {
   display: block;
   text-align: left;
-  white-space: nowrap;
-  transition: color 0.5s ease, text-shadow 0.5s ease, transform 0.5s ease;
+  transition: color 0.5s ease;
   overflow: hidden;
+  height: 12rem;
+  padding: 0;
 
-  & .home__link__wrapper .word .char {
-    transform: translateY(100%);
-
-    @media only screen and (max-width: 1000px) {
-      transform: translateY(0);
-    }
-  }
-
-  &.show .home__link__wrapper .word .char {
-    transform: translateY(0);
-  }
-
-  &:hover .home__link__wrapper .word .char {
-    color: rgba($color: $color-iron, $alpha: 0.7);
+  &:hover{
+    color: rgba($color: $color-pine-tree, $alpha: 1);
   }
 }
 
@@ -108,11 +101,19 @@
   display: inline-block;
   pointer-events: none;
   position: relative;
+  overflow: hidden;
+  height: fit-content;
 
   & .word {
+    transition: transform 1.2s ease;
+    transform: translateY(100%);
+
+    &.active{
+      transform: translateY(0);
+      transition-delay: .5s;
+    }
+
     & .char {
-      transition: all 0.4s ease;
-      transform-origin: center;
 
       // &:nth-of-type(2) {
       //   transition-delay: 0.03s;

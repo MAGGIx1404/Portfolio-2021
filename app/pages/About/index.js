@@ -10,6 +10,9 @@ import { BREAKPOINT_PHONE } from 'utils/breakpoints'
 import { getOffset } from 'utils/dom'
 import { clamp, delay } from 'utils/math'
 
+import THREEScene from "../../components/flower"
+import hoverEffect from "../../components/hover"
+
 export default class extends Page {
   constructor () {
     super({
@@ -37,15 +40,9 @@ export default class extends Page {
    */
   create () {
     super.create()
+    const scene = new THREEScene();
 
-    const image = new Image()
-
-    image.className = 'about__gallery__image'
-    image.src = this.elements.gallery.getAttribute(Detection.isWebPSupported() ? 'data-src-webp' : 'data-src')
-    image.decode().then(_ => {
-      this.elements.gallery.classList.add(this.classes.galleryActive)
-      this.elements.gallery.appendChild(image)
-    })
+    // hoverEffect()
 
     const font = new FontFaceObserver('Neue Montreal', 10000)
 
@@ -70,6 +67,8 @@ export default class extends Page {
 
     await delay(400)
 
+
+
     this.scroll.position = 0
     this.scroll.current = 0
     this.scroll.target = 0
@@ -84,21 +83,6 @@ export default class extends Page {
    */
   onResize () {
     super.onResize()
-
-    if (window.innerWidth > BREAKPOINT_PHONE) {
-      each(this.elements.sectionsTitles, title => {
-        title.style.transform = ''
-
-        const bounding = getOffset(title, this.scroll.current)
-
-        title.start = bounding.top
-        title.limit = getOffset(title.parentNode).height - bounding.height
-      })
-    } else {
-      each(this.elements.sectionsTitles, title => {
-        title.style.transform = ''
-      })
-    }
   }
 
   /**

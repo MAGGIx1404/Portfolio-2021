@@ -4,7 +4,7 @@
 .case__media {
   @include ratio(1366, 768);
 
-  margin: auto;
+  margin: 50vh 0  0 0;
   width: 100%;
 }
 
@@ -26,27 +26,20 @@
 }
 
 .case__title {
-  font-size: 10vw;
+  font-size: 20rem;
   font-weight: bold;
-  font-family: "Poppins", sans-serif;
-  color: transparent;
-  -webkit-text-stroke: 3px $color-iron;
-  transition: color 0.5s ease, text-shadow 0.5s ease;
-  text-shadow: 4px 5px 0px rgba($color: $color-iron, $alpha: 0.5),
-    5px 6px 0px rgba($color: $color-iron, $alpha: 0.3);
+  // font-family: "Poppins", sans-serif;
+  color: #fff;
   overflow: hidden;
   padding: 0 1rem;
   position: relative;
   text-align: center;
-  transform: translateY(50%);
+  transform: translateY(25vh);
   white-space: nowrap;
   z-index: 1;
 
   @include media("<=phone") {
     font-size: 5rem;
-    -webkit-text-stroke: 2px $color-iron;
-    text-shadow: 2px 3px 0px rgba($color: $color-iron, $alpha: 0.5),
-      3px 4px 0px rgba($color: $color-iron, $alpha: 0.3);
     white-space: inherit;
   }
 }
@@ -92,7 +85,8 @@
 
 .case__information__detail {
   font-size: 3rem;
-  font-weight: bold;
+  font-weight: 500;
+  letter-spacing: 1px;
 
   &:nth-child(4) {
     margin-top: 5rem;
@@ -114,9 +108,8 @@
 .case__information__detail__title {
   display: block;
   font-size: 2rem;
-  font-weight: bold;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba($color: $color-iron, $alpha: 1);
+  font-weight: 400;
+  color: $color-pine-tree;
   margin-bottom: 1rem;
   letter-spacing: 1px;
   text-transform: uppercase;
