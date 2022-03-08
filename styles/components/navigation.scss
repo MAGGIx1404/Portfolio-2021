@@ -4,6 +4,7 @@
   pointer-events: none;
   position: fixed;
   z-index: z("navigation");
+  mix-blend-mode: difference;
 }
 
 .navigation__list {

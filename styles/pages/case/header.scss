@@ -1,10 +1,11 @@
 .case__header {
+  position: relative;
 }
 
 .case__media {
   @include ratio(1366, 768);
 
-  margin: 50vh 0  0 0;
+  margin: 0;
   width: 100%;
 }
 
@@ -29,12 +30,14 @@
   font-size: 20rem;
   font-weight: bold;
   // font-family: "Poppins", sans-serif;
-  color: #fff;
+  color: $color-pine-tree;
   overflow: hidden;
   padding: 0 1rem;
-  position: relative;
+  position: absolute;
+  left: 50%;
+  top: 50%;
   text-align: center;
-  transform: translateY(25vh);
+  transform: translate(-50%);
   white-space: nowrap;
   z-index: 1;
 
@@ -47,7 +50,7 @@
 .case__title__text {
   display: block;
   transform: translateY(100%);
-  transition: transform 1.5s 1s $ease-out-expo;
+  transition: transform 1.5s  $ease-out-expo;
 
   .mobile & {
     transition-delay: 0s;

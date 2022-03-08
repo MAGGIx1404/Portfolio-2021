@@ -13,6 +13,8 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 
 import each from "lodash/each";
 
+import Preloader from "components/Preloader";
+
 import Detection from "classes/Detection";
 
 import About from "pages/About";
@@ -57,6 +59,7 @@ class App {
     }
 
     this.text();
+    this.createPreloader();
     this.createNavigation();
     this.createCase();
     this.createHome();
@@ -81,6 +84,11 @@ class App {
     this.addLinksEventsListeners();
 
     this.onResize();
+  }
+
+  createPreloader() {
+    this.preloader = new Preloader();
+    this.preloader.once("completed", () => this.onPreloaded());
   }
 
   createCanvas() {
@@ -113,6 +121,14 @@ class App {
   createCase() {
     this.case = new Case();
   }
+
+
+  onPreloaded() {
+    this.preloader.destroy();
+    this.onResize();
+    this.page.show(true);
+  }
+
 
   /**
    * Change.

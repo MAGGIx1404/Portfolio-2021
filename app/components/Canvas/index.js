@@ -28,7 +28,7 @@ export default class {
     };
 
     this.planeGeometry = new Plane(this.gl, {
-      widthSegments: 20,
+      widthSegments: 50,
     });
 
     document.body.appendChild(this.gl.canvas);

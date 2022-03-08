@@ -26,3 +26,29 @@
 @import "./pages/case/case";
 @import "./pages/case/header";
 @import "./pages/case/media";
+
+.notice{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    background: #000000;
+    justify-content: center;
+    z-index: 100;
+    opacity: 0;
+    visibility: none;
+
+    @media only screen and (max-width:1200px) {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    & h1{
+        font-size: 5rem;
+    }
+
+}

@@ -3,13 +3,17 @@ html(lang="en" style="background: #f4d8cc;")
   head
     include ./partials/head
 
-  body.loading
+  body
 
+    include ./partials/loader
 
     .bg-container
       .bg-component
 
     include ./partials/navigation
+
+    .notice
+      h1 FOR GOOD EXPERINCE, OPEN THIS SITE IN BIG SCREEN.
 
     include ./partials/home
     include ./partials/about
