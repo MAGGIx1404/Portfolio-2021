@@ -41,9 +41,11 @@
     z-index: 100;
     opacity: 0;
     visibility: none;
+    pointer-events: none;
 
     @media only screen and (max-width:1200px) {
       opacity: 1;
+      pointer-events: all;
       visibility: visible;
     }
 
