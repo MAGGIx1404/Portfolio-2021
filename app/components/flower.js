@@ -91,7 +91,7 @@ export default class THREEScene {
   }
 
   createParticles() {
-    const N = 0;
+    const N = 2000;
     const position = new Float32Array(N * 3);
     this.particleGeometry = new THREE.BufferGeometry();
 

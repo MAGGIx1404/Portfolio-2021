@@ -4,7 +4,7 @@
 
 
 html {
-  background: #000000 !important;
+  background: rgba($color: #F8F8F8, $alpha: 1.0) !important;
   box-sizing: border-box;
   color: $color-iron;
   font-size: calc(100vw / 1920 * 10);
@@ -24,7 +24,7 @@ html {
 }
 
 body {
-  background: #000000 !important;
+  background: #F8F8F8  !important;
   // font-family: $font-neue-montreal;
   // font-family: "Poppins", sans-serif;
   font-family: 'Squada One', cursive;
@@ -39,6 +39,19 @@ body {
   font-weight: 400;
   font-display: swap;
   font-style: normal;
+
+  &::after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 45vw;
+    height: 45vw;
+    z-index: -1;
+    border-radius: 50%;
+    background-color: #ffffff;
+    transform: translate(-50%,-50%);
+  }
 }
 
 *,

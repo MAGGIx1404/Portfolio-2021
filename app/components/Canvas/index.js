@@ -11,9 +11,9 @@ import Media from "./Media";
 export default class {
   constructor({ url }) {
     this.background = {
-      r: 0,
-      g: 0,
-      b: 0,
+      r: 248,
+      g: 248,
+      b: 248,
       a: 0,
     };
 
@@ -28,7 +28,7 @@ export default class {
     };
 
     this.planeGeometry = new Plane(this.gl, {
-      widthSegments: 50,
+      widthSegments: 1000
     });
 
     document.body.appendChild(this.gl.canvas);

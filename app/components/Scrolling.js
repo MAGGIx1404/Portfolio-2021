@@ -79,7 +79,7 @@ export default class extends Component {
     if (!this.isEnabled) return
 
     const normalized = NormalizeWheel(event)
-    const speed = normalized.pixelY * 0.5
+    const speed = normalized.pixelY * 0.75
 
     this.scroll.target += speed
   }
@@ -148,7 +148,7 @@ export default class extends Component {
     this.heightTotal = this.elements.list.getBoundingClientRect().height
 
     this.scroll = {
-      ease: 0.1,
+      ease: 0.05,
       position: 0,
       current: 0,
       target: 0,

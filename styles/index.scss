@@ -14,7 +14,8 @@
 @import "./components/canvas";
 @import "./components/functionals";
 @import "./components/navigation";
-@import "./components/loader.scss";
+@import "./components/loader";
+@import "./components/cursor";
 
 @import "./pages/home/home";
 
@@ -35,6 +36,7 @@
     height: 100%;
     text-align: center;
     display: flex;
+    flex-direction: column;
     align-items: center;
     background: #000000;
     justify-content: center;
@@ -47,6 +49,11 @@
       opacity: 1;
       pointer-events: all;
       visibility: visible;
+
+      & h1{
+        font-size: 1.6rem;
+      }
+
     }
 
     & h1{

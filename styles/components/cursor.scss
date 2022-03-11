@@ -1,0 +1,27 @@
+.cursor{
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    margin: -200px 0 0 -200px;
+    will-change: transform;
+    user-select: none;
+    pointer-events: none;
+    z-index: -1;
+
+    & img{
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        opacity: 0;
+        transform-origin: center;
+        transform: scale(.6);
+        transition: all .6s ease;
+    }
+
+    &.active{
+        & img{
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+}

@@ -20,6 +20,7 @@
   align-items: center;
   justify-content: center;
   text-align: left;
+  color: rgba($color: #000000, $alpha: 1);
 
 
   @include media("<=phone") {

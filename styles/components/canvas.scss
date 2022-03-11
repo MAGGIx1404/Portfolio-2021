@@ -17,6 +17,8 @@ canvas.flower-container {
   bottom: 0;
   right: 0;
   pointer-events: none;
-  z-index: -1;
+  z-index: 0;
   transition: opacity 0.5s ease, background 0.5s ease;
+
+
 }
