@@ -10,17 +10,17 @@
 }
 
 .about__header__title {
-  font-size: 28rem;
+  font-size: 26rem;
   line-height: 1.2;
   width: 100%;
   height: 100vh;
-  font-weight: 400;
+  font-weight: 600;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: left;
-  color: rgba($color: #000000, $alpha: 1);
+  color: rgba($color: #ffffff, $alpha: 1);
 
 
   @include media("<=phone") {

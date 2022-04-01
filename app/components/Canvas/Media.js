@@ -181,7 +181,7 @@ export default class {
     this.updateVisibility()
 
     if (this.alpha.current > 0) {
-      this.plane.program.uniforms.uTime.value += (this.direction === 'left' ? 0.04 : -0.04)
+      this.plane.program.uniforms.uTime.value += (this.direction === 'left' ? 0.05 : -0.05)
     }
   }
 

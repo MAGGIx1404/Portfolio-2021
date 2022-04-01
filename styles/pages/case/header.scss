@@ -72,7 +72,7 @@
   opacity: 0;
   transition: opacity 0.4s 1s ease;
   width: 90%;
-  color: #000000;
+  color: rgba($color: #ffffff, $alpha: 1.0);
 
 
   .mobile & {

@@ -66,14 +66,14 @@
 
 .home__item {
   // font: 15rem/0.9;
-  font-size: 18rem;
-  font-weight: bold;
+  font-size: 15rem;
+  font-weight: 500;
   letter-spacing: 2px;
   line-height: 1;
   // font-family: "Poppins", sans-serif;
   // font-family: "ff";
   width: 80%;
-  overflow: hidden;
+  // overflow: hidden;
   height: fit-content;
   padding: 0;
 
@@ -89,9 +89,10 @@
   text-align: left;
   transition: color 0.5s ease;
   overflow: hidden;
-  color: rgba($color: #000000, $alpha: 0.5);
-  height: 18rem;
+  color: rgba($color: #ffffff, $alpha: 1);
+  height: 14rem;
   padding: 0;
+
 
   &:hover{
     color: rgba($color: $color-pine-tree, $alpha: .7);
@@ -182,7 +183,7 @@
 .home__link__media {
   background: $color-iron;
   bottom: 0rem;
-  height: 16rem;
+  height: 14rem;
   margin: 0 1rem;
   object-fit: cover;
   opacity: 0;

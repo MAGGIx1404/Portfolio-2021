@@ -13,6 +13,8 @@ import { clamp, delay } from 'utils/math'
 import THREEScene from "../../components/flower"
 import hoverEffect from "../../components/hover"
 
+
+
 export default class extends Page {
   constructor () {
     super({
@@ -51,6 +53,8 @@ export default class extends Page {
     }).catch(_ => {
       this.onResize()
     })
+
+
   }
 
   /**

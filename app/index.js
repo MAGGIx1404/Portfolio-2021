@@ -78,12 +78,14 @@ class App {
       this.page = this.pages[this.url];
     }
 
-    this.page.show(this.url);
+
+    // this.page.show(this.url);
 
     this.addEventListeners();
     this.addLinksEventsListeners();
 
     this.onResize();
+
   }
 
   createPreloader() {
@@ -124,9 +126,10 @@ class App {
 
 
   onPreloaded() {
+
     this.preloader.destroy();
     this.onResize();
-    this.page.show(true);
+    this.page.show(this.url);
   }
 
 

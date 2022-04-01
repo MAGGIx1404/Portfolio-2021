@@ -172,7 +172,7 @@ export default class extends EventEmitter {
     const normalized = NormalizeWheel(event)
     const speed = normalized.pixelY
 
-    this.scroll.target += speed
+    this.scroll.target += speed * 2
   }
 
   /**

@@ -13,7 +13,7 @@ const backgroundFragment = bg_frag;
 
 export default class THREEScene {
   constructor(
-    container = document.body
+    container = document.querySelector(".about")
   ) {
     this.container = container;
 
@@ -76,7 +76,7 @@ export default class THREEScene {
     //1,
     //1000
     //);
-    this.camera.position.set(0, 0, 5);
+    this.camera.position.set(0, 0, 8);
     //this.controls = new THREE.OrbitControls(
     //  this.camera,
     //this.renderer.domElement
@@ -91,7 +91,7 @@ export default class THREEScene {
   }
 
   createParticles() {
-    const N = 2000;
+    const N = 0;
     const position = new Float32Array(N * 3);
     this.particleGeometry = new THREE.BufferGeometry();
 

@@ -70,6 +70,7 @@
 }
 
 .navigation__link--active {
+  color: $color-pine-tree;
   &:after {
     transform: scaleX(1) !important;
     transform-origin: left center !important;

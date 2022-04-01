@@ -1,5 +1,5 @@
 import FontFaceObserver from "fontfaceobserver";
-import { Renderer, Camera, Transform, Plane, Post, Vec2 } from "ogl";
+import { Renderer, Camera, Transform, Plane, Post, Vec2, Vec3, Orbit } from "ogl";
 import each from "lodash/each";
 
 import fragment from "shaders/post.glsl";
@@ -19,7 +19,10 @@ export default class {
 
     this.url = url;
 
-    this.renderer = new Renderer();
+    this.renderer = new Renderer({
+      alpha:true,
+      premultipliedAlpha: false
+    });
     this.render = this.renderer.render;
     this.gl = this.renderer.gl;
 
@@ -61,6 +64,7 @@ export default class {
     this.camera = new Camera(this.gl);
     this.camera.fov = 45;
     this.camera.position.z = 5;
+    // this.camera.position = new Vec3(0,0,2)
   }
 
   createScene() {
@@ -68,7 +72,9 @@ export default class {
   }
 
   createPost() {
-    this.post = new Post(this.gl);
+    this.post = new Post(this.gl,{
+      alpha:true
+    });
 
     this.pass = this.post.addPass({
       fragment,
@@ -192,10 +198,7 @@ export default class {
    */
   update(scroll) {
     this.gl.clearColor(
-      this.background.r / 255,
-      this.background.g / 255,
-      this.background.b / 255,
-      this.background.a / 1
+      0,0,0,1
     );
 
     if (this.medias) {
