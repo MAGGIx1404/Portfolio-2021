@@ -22,75 +22,50 @@
   text-align: left;
   color: rgba($color: #ffffff, $alpha: 1);
 
-
-  @include media("<=phone") {
-    font-size: 5.5rem;
-    -webkit-text-stroke: 2px rgba($color: $color-iron, $alpha: 1);
-  }
-}
-
-.about__header__title__text {
-  display: flex;
-  justify-content: space-between;
-  overflow: hidden;
-  width: 100%;
-
-  span {
-    transform: translateY(100%);
-    transition-delay: 2s;
+  & span.about__header__title__text{
     width: 100%;
-  }
+    line-height: 0;
+    overflow: hidden;
 
-  &:nth-of-type(2){
-    text-align: center;
-  }
+    & .splitter{
+      width: 100%;
 
-  &:nth-of-type(3){
-    text-align: right;
-  }
+      & .word{
+        overflow: hidden;
+        line-height: 1;
 
-  &:not(:first-child) {
-    margin-top: -6rem;
-  }
+        & .char{
+          transition: transform 0.8s cubic-bezier(0.5, 0, 0, 1);
+          transition-delay: calc(0ms + var(--char-index) * 30ms);
+          transform: translateY(100%);
+        }
 
-  @include media("<=phone") {
-    &:not(:first-child) {
-      margin-top: -1rem;
+      }
+    }
+
+    &:nth-of-type(2){
+        text-align: center;
+    }
+
+    &:nth-of-type(3){
+        text-align: right;
     }
   }
+
 }
 
-.about--active {
-  .about__header__title__text span {
-    transform: translateY(0);
-  }
-
-  .about__header__title__text:nth-child(1) span {
-    transition: transform 1.5s $ease-out-expo;
-  }
-
-  .about__header__title__text:nth-child(2) span {
-    transition: transform 1.5s 0.2s $ease-out-expo;
-  }
-
-  .about__header__title__text:nth-child(3) span {
-    transition: transform 1.5s 0.4s $ease-out-expo;
-  }
-
-  .about__header__title__text:nth-child(4) span {
-    transition: transform 1.5s 0.6s $ease-out-expo;
-  }
-}
-
-.about__header__title__role {
-  span {
-    display: block;
-  }
-
-  span:first-child {
-  }
-
-  span:last-child {
-    text-align: right;
+.about{
+  &--active{
+    & .about__header__title{
+      & span.about__header__title__text{
+        & .splitter{
+          & .word{
+            & .char{
+              transform: translateY(0);
+            }
+          }
+        }
+      }
+    }
   }
 }

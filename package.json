@@ -63,6 +63,7 @@
   "dependencies": {
     "dat.gui": "^0.7.9",
     "imagesloaded": "^4.1.4",
+    "pixi.js": "^5.3.12",
     "splitting": "^1.0.6"
   }
 }

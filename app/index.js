@@ -319,7 +319,7 @@ class App {
   }
 
   text(){
-      const target = document.querySelectorAll(".home__link__wrapper");
+      const target = document.querySelectorAll(".splitter");
       const result = Splitting({
         target: target,
       });
@@ -353,34 +353,6 @@ class App {
 new App();
 
 
-// cursor
-
-function cursor(){
-  const cursorEl = document.querySelector(".cursor")
-  const contactBtn = document.querySelector(".about__section__contact__btn")
-  document.body.addEventListener("mousemove", evt => {
-    const mouseX = evt.clientX;
-    const mouseY = evt.clientY;
-
-    gsap.set(cursorEl, {
-      x: mouseX,
-      y: mouseY,
-      stagger:.2,
-    });
-
-    contactBtn.addEventListener("mouseover",function(){
-      cursorEl.classList.add("active")
-    })
-
-    contactBtn.addEventListener("mouseleave",function(){
-      cursorEl.classList.remove("active")
-    })
-
-  });
-
-}
-
-cursor();
 
 
 console.log(`

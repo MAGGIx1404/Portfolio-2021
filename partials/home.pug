@@ -1,7 +1,7 @@
 mixin template(id, title, direction)
   li.home__item(class=`home__item--${id}`)
     a.home__link.skew(href=`/case/${id}`)
-      span.home__link__wrapper= title
+      span.home__link__wrapper.splitter= title
         img.home__link__media(alt=`${title} Project Preview` data-direction=direction data-src=`projects/${id}.png` data-src-webp=`/projects/${id}.webp`)
 
 section.home

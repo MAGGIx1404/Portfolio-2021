@@ -12,7 +12,7 @@ import { clamp, delay } from 'utils/math'
 
 import THREEScene from "../../components/flower"
 import hoverEffect from "../../components/hover"
-
+// import particle from '../../components/particle'
 
 
 export default class extends Page {
@@ -43,7 +43,7 @@ export default class extends Page {
   create () {
     super.create()
     const scene = new THREEScene();
-
+    // particle()
     // hoverEffect()
 
     const font = new FontFaceObserver('Neue Montreal', 10000)
