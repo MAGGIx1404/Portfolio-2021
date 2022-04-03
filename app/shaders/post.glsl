@@ -9,6 +9,8 @@ vec4 fxaa(sampler2D tex, vec2 uv, vec2 resolution) {
   vec2 pixel = vec2(1) / resolution;
   vec3 l = vec3(0.299, 0.587, 0.114);
 
+
+
   float lNW = dot(texture2D(tex, uv + vec2(-1, -1) * pixel).rgb, l);
   float lNE = dot(texture2D(tex, uv + vec2( 1, -1) * pixel).rgb, l);
   float lSW = dot(texture2D(tex, uv + vec2(-1,  1) * pixel).rgb, l);

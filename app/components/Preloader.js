@@ -8,24 +8,14 @@ export default class Preloader extends Component {
     super({
       element: ".preloader",
       elements: {
-        title: ".preloader__text",
         number: ".preloader__number",
         images: document.querySelectorAll("img"),
-        numberText: ".preloader__number__text"
+        numberText: ".preloader__number__text",
       }
     });
 
     this.length = 0;
-    split({
-      element: this.elements.title,
-      expression: "<br/>"
-    });
-    split({
-      element: this.elements.title,
-      expression: "<br/>"
-    });
-    this.elements.titleSpans =
-      this.elements.title.querySelectorAll("span span");
+
     this.createLoader();
   }
 
@@ -55,21 +45,13 @@ export default class Preloader extends Component {
       this.animateOut = gsap.timeline({
         delay: 1
       });
-      this.animateOut.to(this.elements.titleSpans, {
-        y: "-100%",
-        stagger: "0.1",
-        duration: 1.5,
-        ease: "expo.out"
-      });
       this.animateOut.to(
         this.elements.numberText,
         {
           y: "100%",
-          stagger: "0.1",
           duration: 1.5,
           ease: "expo.out"
-        },
-        "-=1.4"
+        }
       );
 
       this.animateOut.to(
@@ -79,8 +61,7 @@ export default class Preloader extends Component {
           delay: 1,
           opacity: 0,
           alpha: 0
-        },
-        "-=1"
+        }
       );
 
       this.animateOut.call(() => {
