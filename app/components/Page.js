@@ -9,6 +9,7 @@ import Y from 'animations/Y'
 
 import each from 'lodash/each'
 
+
 import { mapEach } from 'utils/dom'
 import { clamp, lerp } from 'utils/math'
 
@@ -28,6 +29,7 @@ export default class extends EventEmitter {
         animationsLines: '[data-animation="line"]',
         animationsParagraphs: '[data-animation="paragraph"]',
         animationsYs: '[data-animation="y"]',
+        animationsParallax: '.case__gallery__media__image',
 
         ...elements
       }
@@ -94,6 +96,9 @@ export default class extends EventEmitter {
     })
 
     this.animations.push(...this.ys)
+
+
+
   }
 
   /**

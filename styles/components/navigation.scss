@@ -27,10 +27,42 @@
     justify-content: center;
     position: relative;
     cursor: pointer;
+    transform-origin: center;
+    transition: all .6s ease;
 
     &:hover{
       .line{
         background: $color-pine-tree;
+
+        &:nth-of-type(1){
+          top: 1.5rem;
+        }
+        &:nth-of-type(3){
+          bottom: 1.5rem;
+        }
+
+      }
+    }
+
+    &.active{
+
+      .line:nth-of-type(1){
+        transform: rotate(45deg);
+        top: 2.4rem;
+      }
+
+      .line:nth-of-type(2){
+        transform:scaleX(0);
+        transform-origin: right;
+      }
+
+      .line:nth-of-type(3){
+        transform: rotate(-45deg);
+        bottom:2.4rem;
+      }
+
+      &:hover{
+        transform: rotate(360deg) scale(1.4);
       }
     }
 
@@ -39,14 +71,21 @@
       height: 2px;
       background: rgba($color: #ffffff, $alpha: 1.0);
       position: absolute;
-      transition: background .5s ease-in-out;
+      transition: all .6s cubic-bezier(0.65, 0.05, 0.36, 1);
 
       &:nth-of-type(1){
         top: 1.3rem;
+        transform-origin: center;
+      }
+
+      &:nth-of-type(2){
+        transform-origin: left;
+        transform: scaleX(1);
       }
 
       &:nth-of-type(3){
         bottom: 1.35rem;
+        transform-origin: rcenter;
       }
     }
   }

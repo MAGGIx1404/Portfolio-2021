@@ -23,3 +23,7 @@ export function random (min, max) {
 export function delay (ms) {
   return new Promise(res => GSAP.delayedCall(ms / 1000, res))
 }
+
+export function map (valueToMap, inMin, inMax, outMin, outMax) {
+  return GSAP.utils.mapRange(inMin, inMax, outMin, outMax, valueToMap)
+}

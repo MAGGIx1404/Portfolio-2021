@@ -5,6 +5,8 @@ import Page from 'components/Page'
 
 import { delay } from 'utils/math'
 
+
+
 export default class extends Page {
   constructor () {
     super({
@@ -74,6 +76,7 @@ export default class extends Page {
 
     return super.hide()
   }
+
 
   /**
    * Events
