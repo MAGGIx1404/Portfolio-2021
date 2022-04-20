@@ -7,11 +7,11 @@ export default class extends Component {
   constructor({ canvas, url }) {
     super({
       classes: {
-        linksActive: "navigation__link--active",
+        linksActive: "hamb__inner__btn--active",
       },
       element: ".navigation",
       elements: {
-        links: ".navigation__link",
+        links: ".hamb__inner__btn",
         easter: ".navigation__easter",
       },
     });

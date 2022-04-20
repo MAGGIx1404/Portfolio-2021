@@ -11,9 +11,9 @@ import Media from "./Media";
 export default class {
   constructor({ url }) {
     this.background = {
-      r: 248,
-      g: 248,
-      b: 248,
+      r: 192,
+      g: 182,
+      b: 182,
       a: 0,
     };
 
@@ -198,7 +198,7 @@ export default class {
    */
   update(scroll) {
     this.gl.clearColor(
-      0,0,0,1
+      21/255,28/255,19/255,1/1
     );
 
     if (this.medias) {

@@ -49,18 +49,19 @@ export default class Preloader extends Component {
         this.elements.numberText,
         {
           y: "100%",
-          duration: 1.5,
+          duration: 1,
           ease: "expo.out"
         }
       );
 
       this.animateOut.to(
         this.element,
-        1.4,
+        1,
         {
           delay: 1,
           opacity: 0,
-          alpha: 0
+          alpha: 0,
+          ease:"expo.out"
         }
       );
 

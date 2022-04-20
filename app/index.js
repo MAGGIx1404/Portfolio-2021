@@ -25,6 +25,8 @@ import Canvas from "components/Canvas";
 import Navigation from "components/Navigation";
 import loader from "sass-loader";
 
+import hambGl from "components/hamb";
+
 import {
   Polyline,
   Renderer,
@@ -64,6 +66,8 @@ class App {
     this.createCase();
     this.createHome();
     this.createAbout();
+    this.createHamb();
+    this.hambAnimation()
 
     this.pages = {
       "/": this.home,
@@ -122,6 +126,10 @@ class App {
 
   createCase() {
     this.case = new Case();
+  }
+
+  createHamb(){
+    this.hamb = new hambGl()
   }
 
 
@@ -348,6 +356,46 @@ class App {
       }
     });
   }
+
+  hambAnimation(){
+    const hamb__btn = document.querySelector(".hamb__btn")
+    const hamb__menu = document.querySelector(".hamb__menu")
+    const hamb__links = [...document.querySelectorAll("a")]
+    const hamb__btns = document.querySelectorAll(".hamb__inner__btn")
+    const tl = gsap.timeline({paused: true})
+
+    tl.to(hamb__menu,1,{
+      opacity:1,
+      autoAlpha: 1,
+      ease: "Power4.easeInOut"
+    })
+    tl.to(hamb__btns,1,{
+      y:"0%",
+      stagger:0.3,
+      ease:"back"
+    },"-=0.5")
+
+    hamb__btn.addEventListener("click", function(){
+      if(hamb__btn.classList.contains("active")){
+        hamb__menu.classList.remove("active")
+        hamb__btn.classList.remove("active")
+        tl.reverse()
+      }else{
+        tl.play()
+        hamb__menu.classList.add("active")
+        hamb__btn.classList.add("active")
+      }
+    })
+
+    hamb__links.forEach((el) => {
+      el.addEventListener("click", function(){
+        hamb__menu.classList.remove("active")
+        hamb__btn.classList.remove("active")
+      })
+    })
+
+  }
+
 }
 
 new App();

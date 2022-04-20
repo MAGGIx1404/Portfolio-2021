@@ -1,7 +1,16 @@
-import { vert, frag, bg_frag, bg_vert, p_frag, p_vert } from "./shaders";
+// import { p_frag, p_vert } from "./shaders";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import gsap from "gsap";
+
+import vert from "../shaders/vert.glsl"
+import frag from "../shaders/frag.glsl"
+
+import bg_vert from "../shaders/bg_vert.glsl"
+import bg_frag from "../shaders/bg_frag.glsl"
+
+import p_vert from "../shaders/p_vert.glsl"
+import p_frag from "../shaders/p_frag.glsl"
 
 const fragment_s = frag;
 const vertex_s = vert;

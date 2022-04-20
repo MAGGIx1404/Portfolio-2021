@@ -143,7 +143,7 @@ export default class {
         this.alpha.target = 0
       }
     } else {
-      if (this.isOpened || this.isHovering) {
+      if (this.isOpened) {
         this.alpha.target = 1
       } else {
         this.alpha.target = 0
