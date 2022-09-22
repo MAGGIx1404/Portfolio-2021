@@ -1,5 +1,4 @@
 # Portfolio-2021
-my personal portfolio.
 
 Preview:
 
